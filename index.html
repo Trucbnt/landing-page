@@ -1,1275 +1,2166 @@
 <!DOCTYPE html>
 <html lang="vi" class="scroll-smooth dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bùi Ngọc Thanh Trúc | Fullstack Developer Portfolio</title>
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
     <!-- Lucide Icons (Modern SVG icons) -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Tailwind Configuration for Black & Navy Theme Customization -->
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#eef2ff',
-                            100: '#e0e7ff',
-                            200: '#c7d2fe',
-                            500: '#3b82f6', // Vivid Electric Blue
-                            600: '#2563eb', // Royal Blue
-                            700: '#1d4ed8', // Deep Navy Blue
-                            950: '#030712', // Midnight Black (Obsidian)
-                        },
-                        neutralDark: {
-                            800: '#0b0f19', // Deep dark slate/navy-tinted card bg
-                            900: '#020617', // Solid Rich Black
-                        }
-                    },
-                    animation: {
-                        'blob': 'blob 10s infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(25px, -40px) scale(1.08)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
-                        }
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                50: "#eef2ff",
+                100: "#e0e7ff",
+                200: "#c7d2fe",
+                500: "#3b82f6", // Vivid Electric Blue
+                600: "#2563eb", // Royal Blue
+                700: "#1d4ed8", // Deep Navy Blue
+                950: "#030712", // Midnight Black (Obsidian)
+              },
+              neutralDark: {
+                800: "#0b0f19", // Deep dark slate/navy-tinted card bg
+                900: "#020617", // Solid Rich Black
+              },
+            },
+            animation: {
+              blob: "blob 10s infinite",
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+            },
+            keyframes: {
+              blob: {
+                "0%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(25px, -40px) scale(1.08)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.95)" },
+                "100%": { transform: "translate(0px, 0px) scale(1)" },
+              },
+            },
+          },
+        },
+      };
     </script>
 
     <!-- Custom Utility Styles & Animations -->
     <style>
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .dark ::-webkit-scrollbar-track {
-            background: #030712;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        .dark ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #3b82f6;
-        }
-        .dark ::-webkit-scrollbar-thumb:hover {
-            background: #2563eb;
-        }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .dark ::-webkit-scrollbar-track {
+        background: #030712;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #1e293b;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #3b82f6;
+      }
+      .dark ::-webkit-scrollbar-thumb:hover {
+        background: #2563eb;
+      }
 
-        /* Glassmorphism Styles with Blue Accent Borders */
-        .glass {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(59, 130, 246, 0.15);
-        }
-        .dark .glass {
-            background: rgba(11, 15, 25, 0.7);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(59, 130, 246, 0.08);
-        }
+      /* Glassmorphism Styles with Blue Accent Borders */
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(59, 130, 246, 0.15);
+      }
+      .dark .glass {
+        background: rgba(11, 15, 25, 0.7);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(59, 130, 246, 0.08);
+      }
 
-        /* Scroll Reveal Utility Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      /* Scroll Reveal Utility Classes */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-        /* Electric Blue Gradient Animation */
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: shine 6s linear infinite;
+      /* Electric Blue Gradient Animation */
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          #60a5fa 0%,
+          #3b82f6 50%,
+          #1d4ed8 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% auto;
+        animation: shine 6s linear infinite;
+      }
+      @keyframes shine {
+        to {
+          background-position: 200% center;
         }
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
+      }
 
-        /* Loading Screen Spinner */
-        #loader {
-            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-        }
+      /* Loading Screen Spinner */
+      #loader {
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
     </style>
-</head>
-<body class="bg-slate-50 dark:bg-brand-950 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300">
-
+  </head>
+  <body
+    class="bg-slate-50 dark:bg-brand-950 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300"
+  >
     <!-- Loading Screen Overlay -->
-    <div id="loader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-50 dark:bg-brand-950">
-        <div class="relative w-20 h-20">
-            <!-- Outermost spinning gradient ring -->
-            <div class="absolute inset-0 rounded-full border-4 border-slate-200 dark:border-slate-900"></div>
-            <div class="absolute inset-0 rounded-full border-4 border-brand-500 border-t-transparent animate-spin"></div>
-        </div>
-        <p class="mt-4 font-semibold text-brand-600 dark:text-brand-500 tracking-wider text-sm animate-pulse">INITIATING PORTFOLIO...</p>
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-50 dark:bg-brand-950"
+    >
+      <div class="relative w-20 h-20">
+        <!-- Outermost spinning gradient ring -->
+        <div
+          class="absolute inset-0 rounded-full border-4 border-slate-200 dark:border-slate-900"
+        ></div>
+        <div
+          class="absolute inset-0 rounded-full border-4 border-brand-500 border-t-transparent animate-spin"
+        ></div>
+      </div>
+      <p
+        class="mt-4 font-semibold text-brand-600 dark:text-brand-500 tracking-wider text-sm animate-pulse"
+      >
+        INITIATING PORTFOLIO...
+      </p>
     </div>
 
     <!-- Toast Notification (Replaces native alerts) -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 glass p-4 rounded-xl shadow-lg border border-brand-500/20 translate-y-24 opacity-0 transition-all duration-300 max-w-sm pointer-events-none">
-        <div class="w-8 h-8 rounded-full bg-brand-100 dark:bg-brand-950/50 flex items-center justify-center text-brand-600">
-            <i data-lucide="check-circle" class="w-5 h-5"></i>
-        </div>
-        <div>
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white" id="toast-title">Thành công!</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400" id="toast-message">Nội dung thông báo ở đây.</p>
-        </div>
+    <div
+      id="toast"
+      class="fixed bottom-6 right-6 z-50 flex items-center gap-3 glass p-4 rounded-xl shadow-lg border border-brand-500/20 translate-y-24 opacity-0 transition-all duration-300 max-w-sm pointer-events-none"
+    >
+      <div
+        class="w-8 h-8 rounded-full bg-brand-100 dark:bg-brand-950/50 flex items-center justify-center text-brand-600"
+      >
+        <i data-lucide="check-circle" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <h4
+          class="font-bold text-sm text-slate-900 dark:text-white"
+          id="toast-title"
+        >
+          Thành công!
+        </h4>
+        <p
+          class="text-xs text-slate-500 dark:text-slate-400"
+          id="toast-message"
+        >
+          Nội dung thông báo ở đây.
+        </p>
+      </div>
     </div>
 
     <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 w-full z-40 transition-all duration-300" id="main-header">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <nav class="flex items-center justify-between glass py-3 px-6 rounded-2xl shadow-sm border border-slate-200/50 dark:border-slate-900/50">
-                <!-- Logo -->
-                <a href="#hero" class="flex items-center gap-2 group">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-500 flex items-center justify-center text-white font-black text-xl shadow-md group-hover:scale-105 transition-transform">
-                        T
-                    </div>
-                    <span class="font-bold text-lg tracking-tight hidden sm:block bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-                        Bùi Ngọc Thanh Trúc
-                    </span>
-                </a>
+    <header
+      class="fixed top-0 left-0 w-full z-40 transition-all duration-300"
+      id="main-header"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <nav
+          class="flex items-center justify-between glass py-3 px-6 rounded-2xl shadow-sm border border-slate-200/50 dark:border-slate-900/50"
+        >
+          <!-- Logo -->
+          <a href="#hero" class="flex items-center gap-2 group">
+            <div
+              class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-500 flex items-center justify-center text-white font-black text-xl shadow-md group-hover:scale-105 transition-transform"
+            >
+              T
+            </div>
+            <span
+              class="font-bold text-lg tracking-tight hidden sm:block bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent"
+            >
+              Bùi Ngọc Thanh Trúc
+            </span>
+          </a>
 
-                <!-- Desktop Navigation Menu -->
-                <div class="hidden md:flex items-center gap-1">
-                    <a href="#about" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors">Về tôi</a>
-                    <a href="#skills" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors">Kỹ năng</a>
-                    <a href="#experience" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors">Kinh nghiệm</a>
-                    <a href="#projects" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors">Dự án</a>
-                    <a href="#availability" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors">Trạng thái</a>
-                    <a href="#contact" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors">Liên hệ</a>
-                </div>
+          <!-- Desktop Navigation Menu -->
+          <div class="hidden md:flex items-center gap-1">
+            <a
+              href="#about"
+              class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors"
+              >Về tôi</a
+            >
+            <a
+              href="#skills"
+              class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors"
+              >Kỹ năng</a
+            >
+            <a
+              href="#experience"
+              class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors"
+              >Kinh nghiệm</a
+            >
+            <a
+              href="#projects"
+              class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors"
+              >Dự án</a
+            >
+            <a
+              href="#availability"
+              class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors"
+              >Trạng thái</a
+            >
+            <a
+              href="#contact"
+              class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors"
+              >Liên hệ</a
+            >
+          </div>
 
-                <!-- Utilities (Dark mode & Mobile Menu Toggle) -->
-                <div class="flex items-center gap-3">
-                    <!-- Light / Dark Mode toggle button -->
-                    <button id="theme-toggle" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors" aria-label="Toggle Theme">
-                        <!-- Sun Icon for Light Mode -->
-                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
-                        <!-- Moon Icon for Dark Mode -->
-                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
-                    </button>
+          <!-- Utilities (Dark mode & Mobile Menu Toggle) -->
+          <div class="flex items-center gap-3">
+            <!-- Light / Dark Mode toggle button -->
+            <button
+              id="theme-toggle"
+              class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors"
+              aria-label="Toggle Theme"
+            >
+              <!-- Sun Icon for Light Mode -->
+              <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+              <!-- Moon Icon for Dark Mode -->
+              <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+            </button>
 
-                    <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors" aria-label="Open Menu">
-                        <i data-lucide="menu" id="menu-icon-open" class="w-5 h-5 block"></i>
-                        <i data-lucide="x" id="menu-icon-close" class="w-5 h-5 hidden"></i>
-                    </button>
-                </div>
-            </nav>
-        </div>
+            <!-- Mobile Menu Button -->
+            <button
+              id="mobile-menu-btn"
+              class="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors"
+              aria-label="Open Menu"
+            >
+              <i
+                data-lucide="menu"
+                id="menu-icon-open"
+                class="w-5 h-5 block"
+              ></i>
+              <i
+                data-lucide="x"
+                id="menu-icon-close"
+                class="w-5 h-5 hidden"
+              ></i>
+            </button>
+          </div>
+        </nav>
+      </div>
 
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute left-4 right-4 top-24 glass rounded-2xl shadow-xl border border-slate-200/50 dark:border-slate-800/50 p-6 flex flex-col gap-4">
-            <a href="#about" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors">
-                <i data-lucide="user" class="w-5 h-5"></i> Về tôi
-            </a>
-            <a href="#skills" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors">
-                <i data-lucide="code-2" class="w-5 h-5"></i> Kỹ năng
-            </a>
-            <a href="#experience" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors">
-                <i data-lucide="briefcase" class="w-5 h-5"></i> Kinh nghiệm
-            </a>
-            <a href="#projects" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors">
-                <i data-lucide="folder-git-2" class="w-5 h-5"></i> Dự án
-            </a>
-            <a href="#availability" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors">
-                <i data-lucide="clock" class="w-5 h-5"></i> Trạng thái
-            </a>
-            <a href="#contact" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors">
-                <i data-lucide="mail" class="w-5 h-5"></i> Liên hệ
-            </a>
-        </div>
+      <!-- Mobile Navigation Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute left-4 right-4 top-24 glass rounded-2xl shadow-xl border border-slate-200/50 dark:border-slate-800/50 p-6 flex flex-col gap-4"
+      >
+        <a
+          href="#about"
+          class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors"
+        >
+          <i data-lucide="user" class="w-5 h-5"></i> Về tôi
+        </a>
+        <a
+          href="#skills"
+          class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors"
+        >
+          <i data-lucide="code-2" class="w-5 h-5"></i> Kỹ năng
+        </a>
+        <a
+          href="#experience"
+          class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors"
+        >
+          <i data-lucide="briefcase" class="w-5 h-5"></i> Kinh nghiệm
+        </a>
+        <a
+          href="#projects"
+          class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors"
+        >
+          <i data-lucide="folder-git-2" class="w-5 h-5"></i> Dự án
+        </a>
+        <a
+          href="#availability"
+          class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors"
+        >
+          <i data-lucide="clock" class="w-5 h-5"></i> Trạng thái
+        </a>
+        <a
+          href="#contact"
+          class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors"
+        >
+          <i data-lucide="mail" class="w-5 h-5"></i> Liên hệ
+        </a>
+      </div>
     </header>
 
     <!-- Hero Section (Full Screen Banner) -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16 px-4 sm:px-6 lg:px-8">
-        <!-- Visual Backdrop Gradients (Deep Blue and Navy) -->
-        <div class="absolute inset-0 z-0 bg-slate-50 dark:bg-brand-950">
-            <!-- Left glowing ambient ball (Electric Blue tint) -->
-            <div class="absolute top-[20%] left-[10%] w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-blue-600/10 dark:bg-blue-600/5 blur-[80px] sm:blur-[120px] animate-blob"></div>
-            <!-- Right glowing ambient ball (Cyan/Navy Indigo tint) -->
-            <div class="absolute bottom-[20%] right-[10%] w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-cyan-500/10 dark:bg-indigo-900/10 blur-[80px] sm:blur-[120px] animate-blob" style="animation-delay: 3s;"></div>
-            <!-- Grid decorative background pattern -->
-            <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b0a_1px,transparent_1px),linear-gradient(to_bottom,#1e293b0a_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#38bdf805_1px,transparent_1px),linear-gradient(to_bottom,#38bdf805_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+    <section
+      id="hero"
+      class="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16 px-4 sm:px-6 lg:px-8"
+    >
+      <!-- Visual Backdrop Gradients (Deep Blue and Navy) -->
+      <div class="absolute inset-0 z-0 bg-slate-50 dark:bg-brand-950">
+        <!-- Left glowing ambient ball (Electric Blue tint) -->
+        <div
+          class="absolute top-[20%] left-[10%] w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-blue-600/10 dark:bg-blue-600/5 blur-[80px] sm:blur-[120px] animate-blob"
+        ></div>
+        <!-- Right glowing ambient ball (Cyan/Navy Indigo tint) -->
+        <div
+          class="absolute bottom-[20%] right-[10%] w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-cyan-500/10 dark:bg-indigo-900/10 blur-[80px] sm:blur-[120px] animate-blob"
+          style="animation-delay: 3s"
+        ></div>
+        <!-- Grid decorative background pattern -->
+        <div
+          class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b0a_1px,transparent_1px),linear-gradient(to_bottom,#1e293b0a_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#38bdf805_1px,transparent_1px),linear-gradient(to_bottom,#38bdf805_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"
+        ></div>
+      </div>
+
+      <div
+        class="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8"
+      >
+        <!-- Hero Info Column -->
+        <div class="flex-1 text-center lg:text-left space-y-6">
+          <!-- Status Badge (Navy-Blue Glow) -->
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20 text-xs font-semibold uppercase tracking-wide"
+          >
+            <span
+              class="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse shadow-[0_0_10px_#3b82f6]"
+            ></span>
+            Sẵn sàng nhận dự án mới
+          </div>
+
+          <!-- Hero Heading with dynamic typing -->
+          <div class="space-y-3">
+            <h1
+              class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+            >
+              Xin chào, Tôi là<br class="hidden sm:inline" />
+              <span class="gradient-text block mt-1 py-1"
+                >Bùi Ngọc Thanh Trúc</span
+              >
+            </h1>
+            <!-- Dynamic Typing Text Wrapper -->
+            <h2
+              class="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-600 dark:text-slate-400 min-h-[40px]"
+            >
+              Tôi là một
+              <span
+                id="typewriter-text"
+                class="text-brand-500 dark:text-brand-400 border-r-2 border-brand-500 pr-1 animate-pulse"
+              ></span>
+            </h2>
+          </div>
+
+          <!-- Paragraph Bio -->
+          <p
+            class="max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-slate-500 dark:text-slate-400 leading-relaxed font-normal"
+          >
+            Một Software Engineer tập trung vào Backend Development với hơn 2
+            năm kinh nghiệm thực chiến trong lĩnh vực Healthcare. Có kinh nghiệm
+            xây dựng và tối ưu hệ thống xử lý dữ liệu lớn, làm việc chuyên sâu
+            với Oracle Database, API và kiến trúc backend hiệu năng cao. Đồng
+            thời có khả năng phát triển Frontend để tạo ra các ứng dụng
+            Fullstack ổn định, tối ưu trải nghiệm người dùng và đáp ứng tốt
+            nghiệp vụ thực tế.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2"
+          >
+            <a
+              href="#contact"
+              class="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl shadow-lg shadow-brand-500/30 hover:shadow-brand-600/50 hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+            >
+              <i data-lucide="mail" class="w-5 h-5"></i>
+              Liên Hệ Với Tôi
+            </a>
+            <button
+              onclick="downloadCV()"
+              class="w-full sm:w-auto px-8 py-4 bg-white dark:bg-stone-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/80 text-slate-800 dark:text-slate-200 font-semibold rounded-xl shadow-sm hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+            >
+              <i data-lucide="download" class="w-5 h-5"></i>
+              Tải Xuống CV
+            </button>
+          </div>
+
+          <!-- Social quick links -->
+          <div
+            class="flex items-center justify-center lg:justify-start gap-4 pt-4 text-slate-400"
+          >
+            <span
+              class="text-xs font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500"
+              >Mạng xã hội:</span
+            >
+            <a
+              href="https://github.com"
+              target="_blank"
+              class="hover:text-brand-500 hover:scale-110 transition-all"
+              aria-label="Github"
+              ><i data-lucide="github" class="w-5 h-5"></i
+            ></a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              class="hover:text-brand-500 hover:scale-110 transition-all"
+              aria-label="LinkedIn"
+              ><i data-lucide="linkedin" class="w-5 h-5"></i
+            ></a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              class="hover:text-brand-500 hover:scale-110 transition-all"
+              aria-label="Facebook"
+              ><i data-lucide="facebook" class="w-5 h-5"></i
+            ></a>
+          </div>
         </div>
 
-        <div class="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
-            <!-- Hero Info Column -->
-            <div class="flex-1 text-center lg:text-left space-y-6">
-                <!-- Status Badge (Navy-Blue Glow) -->
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20 text-xs font-semibold uppercase tracking-wide">
-                    <span class="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse shadow-[0_0_10px_#3b82f6]"></span>
-                    Sẵn sàng nhận dự án mới
+        <!-- Hero Visual Column -->
+        <div
+          class="flex-1 w-full max-w-md lg:max-w-none flex justify-center items-center"
+        >
+          <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+            <!-- Spinning glowing background borders -->
+            <div
+              class="absolute inset-[-10px] rounded-full bg-gradient-to-tr from-brand-500 via-cyan-400 to-indigo-800 opacity-50 blur-md animate-pulse"
+            ></div>
+            <div
+              class="absolute inset-0 rounded-full bg-gradient-to-br from-brand-600 to-indigo-900 p-1"
+            >
+              <!-- Inside content container -->
+              <div
+                class="w-full h-full rounded-full overflow-hidden bg-slate-900 flex items-center justify-center relative group"
+              >
+                <!-- Tech themed avatar placeholder -->
+                <img
+                  src="./image/Screenshot 2025-12-10 093155.png"
+                  alt="Bùi Ngọc Thanh Trúc"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  onerror="this.src='https://placehold.co/400x400/0b0f19/ffffff?text=BNTT'"
+                />
+                <!-- Glass-overlay on hover -->
+                <div
+                  class="absolute inset-0 bg-brand-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center items-center p-6 text-center text-white"
+                >
+                  <i
+                    data-lucide="terminal"
+                    class="w-10 h-10 mb-2 text-brand-400 animate-bounce"
+                  ></i>
+                  <p class="text-sm font-bold">Bùi Ngọc Thanh Trúc</p>
+                  <p class="text-xs text-brand-300">Software Engineer</p>
                 </div>
-
-                <!-- Hero Heading with dynamic typing -->
-                <div class="space-y-3">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                        Xin chào, Tôi là<br class="hidden sm:inline">
-                        <span class="gradient-text block mt-1 py-1">Bùi Ngọc Thanh Trúc</span>
-                    </h1>
-                    <!-- Dynamic Typing Text Wrapper -->
-                    <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-600 dark:text-slate-400 min-h-[40px]">
-                        Tôi là một <span id="typewriter-text" class="text-brand-500 dark:text-brand-400 border-r-2 border-brand-500 pr-1 animate-pulse"></span>
-                    </h2>
-                </div>
-
-                <!-- Paragraph Bio -->
-                <p class="max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-slate-500 dark:text-slate-400 leading-relaxed font-normal">
-                    Một Software Engineer tận tâm với hơn 3 năm kinh nghiệm thực chiến. Chuyên sâu xây dựng hệ thống Fullstack hiệu năng cao, ứng dụng mượt mà, tối giản hóa trải nghiệm UI/UX và chuẩn hóa dữ liệu quy mô lớn.
-                </p>
-
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl shadow-lg shadow-brand-500/30 hover:shadow-brand-600/50 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                        <i data-lucide="mail" class="w-5 h-5"></i>
-                        Liên Hệ Với Tôi
-                    </a>
-                    <button onclick="downloadCV()" class="w-full sm:w-auto px-8 py-4 bg-white dark:bg-stone-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/80 text-slate-800 dark:text-slate-200 font-semibold rounded-xl shadow-sm hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                        <i data-lucide="download" class="w-5 h-5"></i>
-                        Tải Xuống CV
-                    </button>
-                </div>
-
-                <!-- Social quick links -->
-                <div class="flex items-center justify-center lg:justify-start gap-4 pt-4 text-slate-400">
-                    <span class="text-xs font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">Mạng xã hội:</span>
-                    <a href="https://github.com" target="_blank" class="hover:text-brand-500 hover:scale-110 transition-all" aria-label="Github"><i data-lucide="github" class="w-5 h-5"></i></a>
-                    <a href="https://linkedin.com" target="_blank" class="hover:text-brand-500 hover:scale-110 transition-all" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                    <a href="https://facebook.com" target="_blank" class="hover:text-brand-500 hover:scale-110 transition-all" aria-label="Facebook"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                </div>
+              </div>
             </div>
-
-            <!-- Hero Visual Column -->
-            <div class="flex-1 w-full max-w-md lg:max-w-none flex justify-center items-center">
-                <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-                    <!-- Spinning glowing background borders -->
-                    <div class="absolute inset-[-10px] rounded-full bg-gradient-to-tr from-brand-500 via-cyan-400 to-indigo-800 opacity-50 blur-md animate-pulse"></div>
-                    <div class="absolute inset-0 rounded-full bg-gradient-to-br from-brand-600 to-indigo-900 p-1">
-                        <!-- Inside content container -->
-                        <div class="w-full h-full rounded-full overflow-hidden bg-slate-900 flex items-center justify-center relative group">
-                            <!-- Tech themed avatar placeholder -->
-                            <img src="./image/Screenshot 2025-12-10 093155.png" alt="Bùi Ngọc Thanh Trúc" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" onerror="this.src='https://placehold.co/400x400/0b0f19/ffffff?text=BNTT'">
-                            <!-- Glass-overlay on hover -->
-                            <div class="absolute inset-0 bg-brand-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center items-center p-6 text-center text-white">
-                                <i data-lucide="terminal" class="w-10 h-10 mb-2 text-brand-400 animate-bounce"></i>
-                                <p class="text-sm font-bold">Bùi Ngọc Thanh Trúc</p>
-                                <p class="text-xs text-brand-300">Software Engineer</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Floating Tech Badge 1 -->
-                    <div class="absolute -top-3 -right-3 sm:top-4 sm:right-4 glass p-3 rounded-2xl shadow-lg flex items-center gap-2 border border-slate-200/50 dark:border-white/10 animate-bounce" style="animation-duration: 3s">
-                        <span class="w-8 h-8 rounded-lg bg-brand-500/10 flex items-center justify-center text-brand-500">
-                            <i data-lucide="react" class="w-5 h-5 animate-spin" style="animation-duration: 8s"></i>
-                        </span>
-                        <span class="text-xs font-bold text-slate-800 dark:text-slate-100">ReactJS</span>
-                    </div>
-                    <!-- Floating Tech Badge 2 -->
-                    <div class="absolute -bottom-3 -left-3 sm:bottom-4 sm:left-4 glass p-3 rounded-2xl shadow-lg flex items-center gap-2 border border-slate-200/50 dark:border-white/10 animate-bounce" style="animation-duration: 4s">
-                        <span class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-brand-400">
-                            <i data-lucide="server" class="w-5 h-5"></i>
-                        </span>
-                        <span class="text-xs font-bold text-slate-800 dark:text-slate-100">NestJS</span>
-                    </div>
-                </div>
+            <!-- Floating Tech Badge 1 -->
+            <div
+              class="absolute -top-3 -right-3 sm:top-4 sm:right-4 glass p-3 rounded-2xl shadow-lg flex items-center gap-2 border border-slate-200/50 dark:border-white/10 animate-bounce"
+              style="animation-duration: 3s"
+            >
+              <span
+                class="w-8 h-8 rounded-lg bg-brand-500/10 flex items-center justify-center text-brand-500"
+              >
+                <i
+                  class="w-5 h-5 animate-spin fa-brands fa-react"
+                  style="animation-duration: 8s"
+                ></i>
+              </span>
+              <span class="text-xs font-bold text-slate-800 dark:text-slate-100"
+                >ReactJS</span
+              >
             </div>
+            <!-- Floating Tech Badge 2 -->
+            <div
+              class="absolute -bottom-3 -left-3 sm:bottom-4 sm:left-4 glass p-3 rounded-2xl shadow-lg flex items-center gap-2 border border-slate-200/50 dark:border-white/10 animate-bounce"
+              style="animation-duration: 4s"
+            >
+              <span
+                class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-brand-400"
+              >
+                <i class="fa-solid fa-code"></i>
+              </span>
+              <span class="text-xs font-bold text-slate-800 dark:text-slate-100"
+                >NestJS</span
+              >
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- About Me Section -->
-    <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-100/30 dark:bg-neutralDark-900 relative">
-        <div class="max-w-7xl mx-auto relative z-10 reveal">
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-600 dark:text-brand-400 text-sm font-bold uppercase tracking-widest block mb-2">TIỂU SỬ</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Về Bản Thân Tôi</h2>
-                <div class="h-1.5 w-16 bg-brand-500 mx-auto mt-4 rounded-full shadow-[0_0_8px_#3b82f6]"></div>
-            </div>
-
-            <!-- Content Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <!-- Visual Infographic Left Column -->
-                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-                    <div class="glass p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 text-center">
-                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center mx-auto mb-4">
-                            <i data-lucide="briefcase" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-3xl font-black text-slate-900 dark:text-white">3+</h3>
-                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 font-medium">Năm kinh nghiệm</p>
-                    </div>
-                    <div class="glass p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 text-center">
-                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-brand-500 flex items-center justify-center mx-auto mb-4">
-                            <i data-lucide="code" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-3xl font-black text-slate-900 dark:text-white">15+</h3>
-                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 font-medium">Dự án hoàn thành</p>
-                    </div>
-                    <div class="glass col-span-2 p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-brand-500 flex items-center justify-center flex-shrink-0">
-                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
-                        </div>
-                        <div class="text-left flex-1">
-                            <h4 class="font-bold text-slate-900 dark:text-white text-base">Cao Đẳng Công Nghệ Thông Tin</h4>
-                            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">FPT Polytechnic</p>
-                            <div class="flex items-center gap-3 mt-1.5">
-                                <span class="flex items-center gap-1 text-xs font-semibold text-amber-500 dark:text-amber-400">
-                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
-                                    GPA 4.0 / 4.0
-                                </span>
-                                <span class="text-slate-300 dark:text-slate-600">|</span>
-                                <span class="text-xs font-semibold text-amber-500 dark:text-amber-400">9.2 / 10</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text Info Right Column -->
-                <div class="lg:col-span-7 space-y-6 text-slate-600 dark:text-slate-300">
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Chào bạn! Tôi là một lập trình viên Fullstack đầy nhiệt huyết.</h3>
-                    <p class="leading-relaxed">
-                        Tôi yêu thích việc giải quyết các bài toán phức tạp trên cả Backend và Frontend. Luôn nỗ lực hết mình để tối ưu hoá hiệu suất cơ sở dữ liệu, phân tải API và kiến tạo giao diện có UX mượt mà, tinh tế nhất. 
-                    </p>
-                    <p class="leading-relaxed">
-                        Với nền tảng vững chắc về kiến trúc phần mềm, tư duy giải thuật vững vàng cùng khả năng thích ứng linh hoạt trước sự thay đổi nhanh chóng của công nghệ, tôi tự tin đem đến giải pháp tối ưu cho mọi thách thức lập trình.
-                    </p>
-                    
-                    <!-- Tech Interests -->
-                    <div class="space-y-3 pt-2">
-                        <h4 class="font-bold text-slate-900 dark:text-white">Định hướng & Sở thích công nghệ:</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                            <div class="flex items-center gap-2.5">
-                                <i data-lucide="cpu" class="w-4 h-4 text-brand-500"></i> Microservices Architecture
-                            </div>
-                            <div class="flex items-center gap-2.5">
-                                <i data-lucide="database-backup" class="w-4 h-4 text-brand-500"></i> Database Optimization (SQL & NoSQL)
-                            </div>
-                            <div class="flex items-center gap-2.5">
-                                <i data-lucide="zap" class="w-4 h-4 text-brand-500"></i> High-performance Caching
-                            </div>
-                            <div class="flex items-center gap-2.5">
-                                <i data-lucide="shield-check" class="w-4 h-4 text-brand-500"></i> Secure API Development & DevOps
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section
+      id="about"
+      class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-100/30 dark:bg-neutralDark-900 relative"
+    >
+      <div class="max-w-7xl mx-auto relative z-10 reveal">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span
+            class="text-brand-600 dark:text-brand-400 text-sm font-bold uppercase tracking-widest block mb-2"
+            >TIỂU SỬ</span
+          >
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+          >
+            Về Bản Thân Tôi
+          </h2>
+          <div
+            class="h-1.5 w-16 bg-brand-500 mx-auto mt-4 rounded-full shadow-[0_0_8px_#3b82f6]"
+          ></div>
         </div>
+
+        <!-- Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <!-- Visual Infographic Left Column -->
+          <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+            <div
+              class="glass p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 text-center"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center mx-auto mb-4"
+              >
+                <i data-lucide="briefcase" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-3xl font-black text-slate-900 dark:text-white">
+                2+
+              </h3>
+              <p
+                class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 font-medium"
+              >
+                Năm kinh nghiệm
+              </p>
+            </div>
+            <div
+              class="glass p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 text-center"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-indigo-500/10 text-brand-500 flex items-center justify-center mx-auto mb-4"
+              >
+                <i data-lucide="code" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-3xl font-black text-slate-900 dark:text-white">
+                5+
+              </h3>
+              <p
+                class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 font-medium"
+              >
+                Dự án hoàn thành
+              </p>
+            </div>
+            <div
+              class="glass col-span-2 p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 flex items-center gap-4"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-blue-500/10 text-brand-500 flex items-center justify-center flex-shrink-0"
+              >
+                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+              </div>
+              <div class="text-left flex-1">
+                <h4 class="font-bold text-slate-900 dark:text-white text-base">
+                  Cao Đẳng Công Nghệ Thông Tin
+                </h4>
+                <p
+                  class="text-xs sm:text-sm text-slate-500 dark:text-slate-400"
+                >
+                  FPT Polytechnic
+                </p>
+                <div class="flex items-center gap-3 mt-1.5">
+                  <span
+                    class="flex items-center gap-1 text-xs font-semibold text-amber-500 dark:text-amber-400"
+                  >
+                    <i
+                      data-lucide="star"
+                      class="w-3.5 h-3.5 fill-amber-500"
+                    ></i>
+                    GPA 4.0 / 4.0
+                  </span>
+                  <span class="text-slate-300 dark:text-slate-600">|</span>
+                  <span
+                    class="text-xs font-semibold text-amber-500 dark:text-amber-400"
+                    >9.2 / 10</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text Info Right Column -->
+          <div
+            class="lg:col-span-7 space-y-6 text-slate-600 dark:text-slate-300"
+          >
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
+              Xin chào! Tôi là một Fullstack Developer đam mê xây dựng hệ thống
+              hiệu năng cao và giao diện hiện đại.
+            </h3>
+            <p class="leading-relaxed">
+              Có kinh nghiệm phát triển Backend, tối ưu Oracle Database, API và
+              xây dựng ứng dụng trong lĩnh vực Healthcare. Đồng thời, tôi cũng
+              có khả năng phát triển Frontend để mang đến trải nghiệm người dùng
+              mượt mà, tối giản và hiệu quả.
+            </p>
+            <p class="leading-relaxed">
+              Với nền tảng vững chắc về kiến trúc phần mềm, tư duy giải thuật
+              vững vàng cùng khả năng thích ứng linh hoạt trước sự thay đổi
+              nhanh chóng của công nghệ, tôi tự tin đem đến giải pháp tối ưu cho
+              mọi thách thức lập trình.
+            </p>
+
+            <!-- Tech Interests -->
+            <div class="space-y-3 pt-2">
+              <h4 class="font-bold text-slate-900 dark:text-white">
+                Định hướng & Sở thích công nghệ:
+              </h4>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="cpu" class="w-4 h-4 text-brand-500"></i>
+                  Microservices Architecture
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i
+                    data-lucide="database-backup"
+                    class="w-4 h-4 text-brand-500"
+                  ></i>
+                  Database Optimization (SQL & NoSQL)
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="zap" class="w-4 h-4 text-brand-500"></i>
+                  High-performance Caching
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i
+                    data-lucide="shield-check"
+                    class="w-4 h-4 text-brand-500"
+                  ></i>
+                  Secure API Development & DevOps
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="py-24 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto reveal">
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-600 dark:text-brand-400 text-sm font-bold uppercase tracking-widest block mb-2">HỆ SINH THÁI</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Kỹ Năng & Công Nghệ</h2>
-                <div class="h-1.5 w-16 bg-brand-500 mx-auto mt-4 rounded-full shadow-[0_0_8px_#3b82f6]"></div>
-            </div>
-
-            <!-- Skills Grid Category System -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Frontend Skills Card -->
-                <div class="glass p-6 sm:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-md hover:border-brand-500/20 transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center">
-                            <i data-lucide="layout" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Frontend Development</h3>
-                    </div>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between text-sm mb-1.5 font-semibold">
-                                <span>ReactJS & NextJS</span>
-                                <span class="text-brand-500">90%</span>
-                            </div>
-                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                                <div class="bg-brand-500 h-full rounded-full transition-all duration-500" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-sm mb-1.5 font-semibold">
-                                <span>TypeScript / JavaScript</span>
-                                <span class="text-brand-500">92%</span>
-                            </div>
-                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                                <div class="bg-brand-500 h-full rounded-full transition-all duration-500" style="width: 92%"></div>
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">HTML5/CSS3</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">TailwindCSS</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Redux/Zustand</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Backend Skills Card -->
-                <div class="glass p-6 sm:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-md hover:border-brand-500/20 transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-brand-500 flex items-center justify-center">
-                            <i data-lucide="server" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Backend Development</h3>
-                    </div>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between text-sm mb-1.5 font-semibold">
-                                <span>NodeJS & NestJS</span>
-                                <span class="text-brand-500">88%</span>
-                            </div>
-                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                                <div class="bg-brand-500 h-full rounded-full transition-all duration-500" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-sm mb-1.5 font-semibold">
-                                <span>RESTful APIs / GraphQL</span>
-                                <span class="text-brand-500">85%</span>
-                            </div>
-                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                                <div class="bg-brand-500 h-full rounded-full transition-all duration-500" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">ExpressJS</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Microservices</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">WebSockets</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Database & DevOps Skills Card -->
-                <div class="glass p-6 sm:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-md hover:border-brand-500/20 transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-brand-500 flex items-center justify-center">
-                            <i data-lucide="database" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Database & DevOps</h3>
-                    </div>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between text-sm mb-1.5 font-semibold">
-                                <span>Databases (SQL & NoSQL)</span>
-                                <span class="text-brand-500">85%</span>
-                            </div>
-                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                                <div class="bg-brand-500 h-full rounded-full transition-all duration-500" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-sm mb-1.5 font-semibold">
-                                <span>Docker & Git / Linux</span>
-                                <span class="text-brand-500">80%</span>
-                            </div>
-                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                                <div class="bg-brand-500 h-full rounded-full transition-all duration-500" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Oracle Database</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Redis</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">CI/CD Pipeline</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tech Icons Grid Presentation -->
-            <div class="mt-16 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
-                <!-- Javascript -->
-                <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500">
-                    <span class="font-bold text-lg text-amber-500">JS</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">JavaScript</span>
-                </div>
-                <!-- Typescript -->
-                <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500">
-                    <span class="font-bold text-lg text-brand-500">TS</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">TypeScript</span>
-                </div>
-                <!-- ReactJS -->
-                <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500">
-                    <span class="font-bold text-lg text-cyan-400 animate-spin" style="animation-duration: 12s">⚛</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">ReactJS</span>
-                </div>
-                <!-- NextJS -->
-                <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500">
-                    <span class="font-extrabold text-lg text-slate-900 dark:text-slate-100">N</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">NextJS</span>
-                </div>
-                <!-- NestJS -->
-                <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500">
-                    <span class="font-bold text-lg text-rose-500">@</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">NestJS</span>
-                </div>
-                <!-- NodeJS -->
-                <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500">
-                    <span class="font-bold text-lg text-emerald-500">Njs</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">NodeJS</span>
-                </div>
-                <!-- Docker -->
-                <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500">
-                    <span class="font-bold text-lg text-sky-500">D</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Docker</span>
-                </div>
-                <!-- Redis -->
-                <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500">
-                    <span class="font-bold text-lg text-red-500">R</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Redis</span>
-                </div>
-                <!-- SQL Server / PG -->
-                <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500">
-                    <span class="font-bold text-lg text-indigo-400">SQL</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">PostgreSQL</span>
-                </div>
-                <!-- Oracle Database -->
-                <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500">
-                    <span class="font-bold text-lg text-red-600">Ora</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">OracleDB</span>
-                </div>
-                <!-- Git -->
-                <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500">
-                    <span class="font-bold text-lg text-orange-500">Git</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Git</span>
-                </div>
-                <!-- Linux -->
-                <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500">
-                    <span class="font-bold text-lg text-slate-500">Lnx</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Linux</span>
-                </div>
-            </div>
+      <div class="max-w-7xl mx-auto reveal">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span
+            class="text-brand-600 dark:text-brand-400 text-sm font-bold uppercase tracking-widest block mb-2"
+            >HỆ SINH THÁI</span
+          >
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+          >
+            Kỹ Năng & Công Nghệ
+          </h2>
+          <div
+            class="h-1.5 w-16 bg-brand-500 mx-auto mt-4 rounded-full shadow-[0_0_8px_#3b82f6]"
+          ></div>
         </div>
+
+        <!-- Skills Grid Category System -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Frontend Skills Card -->
+          <div
+            class="glass p-6 sm:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-md hover:border-brand-500/20 transition-all duration-300"
+          >
+            <div class="flex items-center gap-3 mb-6">
+              <div
+                class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center"
+              >
+                <i data-lucide="layout" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 dark:text-white">
+                Frontend Development
+              </h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-sm mb-1.5 font-semibold">
+                  <span>ReactJS & NextJS</span>
+                  <span class="text-brand-500">90%</span>
+                </div>
+                <div
+                  class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="bg-brand-500 h-full rounded-full transition-all duration-500"
+                    style="width: 90%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5 font-semibold">
+                  <span>TypeScript / JavaScript</span>
+                  <span class="text-brand-500">92%</span>
+                </div>
+                <div
+                  class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="bg-brand-500 h-full rounded-full transition-all duration-500"
+                    style="width: 92%"
+                  ></div>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  >HTML5/CSS3</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  >Ant design</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  >Bootstrap</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  >TailwindCSS</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  >Redux/Zustand</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Backend Skills Card -->
+          <div
+            class="glass p-6 sm:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-md hover:border-brand-500/20 transition-all duration-300"
+          >
+            <div class="flex items-center gap-3 mb-6">
+              <div
+                class="w-10 h-10 rounded-xl bg-indigo-500/10 text-brand-500 flex items-center justify-center"
+              >
+                <i data-lucide="server" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 dark:text-white">
+                Backend Development
+              </h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-sm mb-1.5 font-semibold">
+                  <span>NodeJS & NestJS</span>
+                  <span class="text-brand-500">88%</span>
+                </div>
+                <div
+                  class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="bg-brand-500 h-full rounded-full transition-all duration-500"
+                    style="width: 88%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5 font-semibold">
+                  <span>ASP.NET CORE</span>
+                  <span class="text-brand-500">70%</span>
+                </div>
+                <div
+                  class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="bg-brand-500 h-full rounded-full transition-all duration-500"
+                    style="width: 70%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5 font-semibold">
+                  <span>PHP & Laravel </span>
+                  <span class="text-brand-500">75%</span>
+                </div>
+                <div
+                  class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="bg-brand-500 h-full rounded-full transition-all duration-500"
+                    style="width: 75%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5 font-semibold">
+                  <span>RESTful APIs / GraphQL</span>
+                  <span class="text-brand-500">85%</span>
+                </div>
+                <div
+                  class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="bg-brand-500 h-full rounded-full transition-all duration-500"
+                    style="width: 85%"
+                  ></div>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  >ExpressJS</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  >Microservices</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  >MVC</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  >WebSockets</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Database & DevOps Skills Card -->
+          <div
+            class="glass p-6 sm:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-md hover:border-brand-500/20 transition-all duration-300"
+          >
+            <div class="flex items-center gap-3 mb-6">
+              <div
+                class="w-10 h-10 rounded-xl bg-blue-500/10 text-brand-500 flex items-center justify-center"
+              >
+                <i data-lucide="database" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 dark:text-white">
+                Database & DevOps
+              </h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-sm mb-1.5 font-semibold">
+                  <span>Databases (SQL & NoSQL)</span>
+                  <span class="text-brand-500">85%</span>
+                </div>
+                <div
+                  class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="bg-brand-500 h-full rounded-full transition-all duration-500"
+                    style="width: 85%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5 font-semibold">
+                  <span>Docker & Git / Linux</span>
+                  <span class="text-brand-500">80%</span>
+                </div>
+                <div
+                  class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="bg-brand-500 h-full rounded-full transition-all duration-500"
+                    style="width: 80%"
+                  ></div>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  >Oracle Database</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  >Redis</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Icons Grid Presentation -->
+        <div class="mt-16 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+          <!-- Javascript -->
+          <div
+            class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500"
+          >
+            <span class="font-bold text-lg text-amber-500">JS</span>
+            <span
+              class="text-xs font-semibold text-slate-500 dark:text-slate-400"
+              >JavaScript</span
+            >
+          </div>
+          <!-- Typescript -->
+          <div
+            class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500"
+          >
+            <span class="font-bold text-lg text-brand-500">TS</span>
+            <span
+              class="text-xs font-semibold text-slate-500 dark:text-slate-400"
+              >TypeScript</span
+            >
+          </div>
+          <!-- ReactJS -->
+          <div
+            class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500"
+          >
+            <span
+              class="font-bold text-lg text-cyan-400 animate-spin"
+              style="animation-duration: 12s"
+              >⚛</span
+            >
+            <span
+              class="text-xs font-semibold text-slate-500 dark:text-slate-400"
+              >ReactJS</span
+            >
+          </div>
+          <!-- NextJS -->
+          <div
+            class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500"
+          >
+            <span
+              class="font-extrabold text-lg text-slate-900 dark:text-slate-100"
+              >P</span
+            >
+            <span
+              class="text-xs font-semibold text-slate-500 dark:text-slate-400"
+              >PHP</span
+            >
+          </div>
+          <!-- NestJS -->
+          <div
+            class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500"
+          >
+            <span class="font-bold text-lg text-rose-500">@</span>
+            <span
+              class="text-xs font-semibold text-slate-500 dark:text-slate-400"
+              >NestJS</span
+            >
+          </div>
+          <!-- NodeJS -->
+          <div
+            class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500"
+          >
+            <span class="font-bold text-lg text-emerald-500">Njs</span>
+            <span
+              class="text-xs font-semibold text-slate-500 dark:text-slate-400"
+              >NodeJS</span
+            >
+          </div>
+          <!-- Docker -->
+          <div
+            class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500"
+          >
+            <span class="font-bold text-lg text-sky-500">D</span>
+            <span
+              class="text-xs font-semibold text-slate-500 dark:text-slate-400"
+              >Docker</span
+            >
+          </div>
+          <!-- Redis -->
+          <div
+            class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500"
+          >
+            <span class="font-bold text-lg text-red-500">R</span>
+            <span
+              class="text-xs font-semibold text-slate-500 dark:text-slate-400"
+              >Redis</span
+            >
+          </div>
+          <!-- SQL Server / PG -->
+          <div
+            class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500"
+          >
+            <span class="font-bold text-lg text-indigo-400">SQL</span>
+            <span
+              class="text-xs font-semibold text-slate-500 dark:text-slate-400"
+              >PostgreSQL</span
+            >
+          </div>
+          <!-- Oracle Database -->
+          <div
+            class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500"
+          >
+            <span class="font-bold text-lg text-red-600">Ora</span>
+            <span
+              class="text-xs font-semibold text-slate-500 dark:text-slate-400"
+              >OracleDB</span
+            >
+          </div>
+          <!-- Git -->
+          <div
+            class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500"
+          >
+            <span class="font-bold text-lg text-orange-500">Git</span>
+            <span
+              class="text-xs font-semibold text-slate-500 dark:text-slate-400"
+              >Git</span
+            >
+          </div>
+          <!-- Linux -->
+          <div
+            class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-slate-200/50 dark:border-slate-800/50 hover:scale-105 transition-transform hover:border-brand-500"
+          >
+            <span class="font-bold text-lg text-slate-500">Lnx</span>
+            <span
+              class="text-xs font-semibold text-slate-500 dark:text-slate-400"
+              >Linux</span
+            >
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Work Experience Section -->
-    <section id="experience" class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-100/30 dark:bg-neutralDark-900 relative">
-        <div class="max-w-4xl mx-auto relative z-10 reveal">
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-600 dark:text-brand-400 text-sm font-bold uppercase tracking-widest block mb-2">QUÁ TRÌNH</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Kinh Nghiệm Làm Việc</h2>
-                <div class="h-1.5 w-16 bg-brand-500 mx-auto mt-4 rounded-full shadow-[0_0_8px_#3b82f6]"></div>
-            </div>
-
-            <!-- Vertical Interactive Timeline -->
-            <div class="relative border-l-2 border-brand-200 dark:border-slate-800 ml-4 md:ml-6 space-y-12">
-                <!-- Timeline Item 1 -->
-                <div class="relative pl-8 sm:pl-10 group">
-                    <!-- Timeline Node (Dot) -->
-                    <div class="absolute -left-3 top-1.5 w-6 h-6 rounded-full bg-white dark:bg-emerald-950 border-4 border-emerald-500 group-hover:bg-emerald-500 transition-colors duration-300 shadow-md"></div>
-
-                    <!-- Content Card -->
-                    <div class="glass p-6 rounded-2xl border border-emerald-200/40 dark:border-emerald-900/40 shadow-sm hover:shadow-md transition-all duration-300">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                            <div>
-                                <div class="flex items-center gap-2 mb-0.5">
-                                    <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">Backend Developer</h3>
-                                    <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block"></span>
-                                        Đang làm việc
-                                    </span>
-                                </div>
-                                <p class="text-emerald-600 dark:text-emerald-400 font-semibold text-sm flex items-center gap-1.5">
-                                    <i data-lucide="stethoscope" class="w-3.5 h-3.5"></i>
-                                    Healthcare – Hệ thống App Đi Buồng Bệnh Viện
-                                </p>
-                            </div>
-                            <span class="inline-flex self-start sm:self-center px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-500/20 whitespace-nowrap">
-                                05/2025 – Hiện tại
-                            </span>
-                        </div>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4">
-                            Phát triển và vận hành hệ thống backend cho ứng dụng đi buồng bệnh viện — xây dựng REST API quản lý bệnh nhân, y lệnh và chỉ số sinh tồn theo thời gian thực. Hệ thống đã được triển khai thực tế tại nhiều bệnh viện lớn và nhỏ trên cả nước, tích lũy hơn <strong>1 năm kinh nghiệm chuyên sâu mảng Healthcare</strong>.
-                        </p>
-                        <!-- Highlight -->
-                        <div class="flex items-start gap-2 mb-4 p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200/50 dark:border-emerald-800/30">
-                            <i data-lucide="hospital" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
-                            <p class="text-xs text-emerald-700 dark:text-emerald-300 font-medium leading-relaxed">
-                                Đã triển khai & vận hành tại nhiều bệnh viện lớn và nhỏ — hệ thống hoạt động ổn định trong môi trường y tế thực tế.
-                            </p>
-                        </div>
-                        <!-- Tech Tags -->
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">NodeJS</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">NestJS</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">PostgreSQL</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">REST API</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">WebSocket</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">Docker</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 2 -->
-                <div class="relative pl-8 sm:pl-10 group">
-                    <!-- Timeline Node (Dot) -->
-                    <div class="absolute -left-3 top-1.5 w-6 h-6 rounded-full bg-white dark:bg-brand-950 border-4 border-brand-500 group-hover:bg-brand-500 transition-colors duration-300 shadow-md"></div>
-                    
-                    <!-- Content Card -->
-                    <div class="glass p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-md transition-all duration-300">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors">Backend Developer</h3>
-                                <p class="text-brand-600 dark:text-brand-400 font-semibold text-sm">Công ty Giải pháp Phần mềm Vinasoft</p>
-                            </div>
-                            <span class="inline-flex self-start sm:self-center px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold border border-slate-300 dark:border-slate-700">
-                                09/2023 - 05/2024
-                            </span>
-                        </div>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4">
-                            Lập trình và hoàn thiện các dịch vụ cốt lõi (Microservices) bằng NodeJS. Phát triển API thanh toán bảo mật, tích hợp hạ tầng Redis Caching tăng tốc độ xử lý lên đến 40%.
-                        </p>
-                        <!-- Tech Tags -->
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300">NodeJS</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300">ExpressJS</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300">Redis</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300">PostgreSQL</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300">Git</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="relative pl-8 sm:pl-10 group">
-                    <!-- Timeline Node (Dot) -->
-                    <div class="absolute -left-3 top-1.5 w-6 h-6 rounded-full bg-white dark:bg-brand-950 border-4 border-brand-500 group-hover:bg-brand-500 transition-colors duration-300 shadow-md"></div>
-                    
-                    <!-- Content Card -->
-                    <div class="glass p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-md transition-all duration-300">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors">Intern Fullstack Developer</h3>
-                                <p class="text-brand-600 dark:text-brand-400 font-semibold text-sm">Startup NextGen Tech</p>
-                            </div>
-                            <span class="inline-flex self-start sm:self-center px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold border border-slate-300 dark:border-slate-700">
-                                03/2023 - 08/2023
-                            </span>
-                        </div>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4">
-                            Tiếp cận quy trình phát triển Agile/Scrum. Hỗ trợ thiết kế UI cho landing page, tối ưu SEO, viết clean code HTML/CSS/Tailwind và phát hiện sửa lỗi cơ bản cho các module CMS.
-                        </p>
-                        <!-- Tech Tags -->
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300">JavaScript</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300">ReactJS</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300">TailwindCSS</span>
-                            <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300">Git</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section
+      id="experience"
+      class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-100/30 dark:bg-neutralDark-900 relative"
+    >
+      <div class="max-w-4xl mx-auto relative z-10 reveal">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span
+            class="text-brand-600 dark:text-brand-400 text-sm font-bold uppercase tracking-widest block mb-2"
+            >QUÁ TRÌNH</span
+          >
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+          >
+            Kinh Nghiệm Làm Việc
+          </h2>
+          <div
+            class="h-1.5 w-16 bg-brand-500 mx-auto mt-4 rounded-full shadow-[0_0_8px_#3b82f6]"
+          ></div>
         </div>
+
+        <!-- Vertical Interactive Timeline -->
+        <div
+          class="relative border-l-2 border-brand-200 dark:border-slate-800 ml-4 md:ml-6 space-y-12"
+        >
+          <!-- Timeline Item 1 -->
+          <div class="relative pl-8 sm:pl-10 group">
+            <!-- Timeline Node (Dot) -->
+            <div
+              class="absolute -left-3 top-1.5 w-6 h-6 rounded-full bg-white dark:bg-emerald-950 border-4 border-emerald-500 group-hover:bg-emerald-500 transition-colors duration-300 shadow-md"
+            ></div>
+
+            <!-- Content Card -->
+            <div
+              class="glass p-6 rounded-2xl border border-emerald-200/40 dark:border-emerald-900/40 shadow-sm hover:shadow-md transition-all duration-300"
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4"
+              >
+                <div>
+                  <div class="flex items-center gap-2 mb-0.5">
+                    <h3
+                      class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors"
+                    >
+                      Backend Developer
+                    </h3>
+                    <span
+                      class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block"
+                      ></span>
+                      Đang làm việc
+                    </span>
+                  </div>
+
+                  <p
+                    class="text-brand-600 dark:text-brand-400 font-semibold text-sm"
+                  >
+                    Công ty cổ phần Synodus
+                  </p>
+                  <p
+                    class="text-emerald-600 dark:text-emerald-400 font-semibold text-sm flex items-center gap-1.5"
+                  >
+                    <i data-lucide="stethoscope" class="w-3.5 h-3.5"></i>
+                    Healthcare – Hệ thống App Đi Buồng Bệnh Viện
+                  </p>
+                </div>
+                <span
+                  class="inline-flex self-start sm:self-center px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-500/20 whitespace-nowrap"
+                >
+                  05/2025 – Hiện tại
+                </span>
+              </div>
+              <p
+                class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4"
+              >
+                Phát triển và vận hành hệ thống backend cho ứng dụng đi buồng
+                bệnh viện — xây dựng REST API quản lý bệnh nhân, y lệnh và chỉ
+                số sinh tồn theo thời gian thực. Hệ thống đã được triển khai
+                thực tế tại nhiều bệnh viện lớn và nhỏ trên cả nước, tích lũy
+                hơn
+                <strong>1 năm kinh nghiệm mảng Healthcare</strong>.
+              </p>
+              <!-- Highlight -->
+              <div
+                class="flex items-start gap-2 mb-4 p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200/50 dark:border-emerald-800/30"
+              >
+                <i
+                  data-lucide="hospital"
+                  class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"
+                ></i>
+                <p
+                  class="text-xs text-emerald-700 dark:text-emerald-300 font-medium leading-relaxed"
+                >
+                  Đã triển khai & vận hành tại nhiều bệnh viện lớn và nhỏ — hệ
+                  thống hoạt động ổn định trong môi trường y tế thực tế.
+                </p>
+              </div>
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300"
+                  >NodeJS</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300"
+                  >NestJS</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300"
+                  >Jwt</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300"
+                  >BullMQ/Bull</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300"
+                  >Oracle database</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300"
+                  >REST API</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300"
+                  >Redis</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300"
+                  >Docker</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="relative pl-8 sm:pl-10 group">
+            <!-- Timeline Node (Dot) -->
+            <div
+              class="absolute -left-3 top-1.5 w-6 h-6 rounded-full bg-white dark:bg-brand-950 border-4 border-brand-500 group-hover:bg-brand-500 transition-colors duration-300 shadow-md"
+            ></div>
+
+            <!-- Content Card -->
+            <div
+              class="glass p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-md transition-all duration-300"
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4"
+              >
+                <div>
+                  <h3
+                    class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors"
+                  >
+                    Backend Developer
+                  </h3>
+                  <p
+                    class="text-brand-600 dark:text-brand-400 font-semibold text-sm"
+                  >
+                    Công ty cổ phần synodus
+                  </p>
+                </div>
+                <span
+                  class="inline-flex self-start sm:self-center px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold border border-slate-300 dark:border-slate-700"
+                >
+                  03/2025 - 08/2025
+                </span>
+              </div>
+              <p
+                class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4"
+              >
+                Thiết kế và lập trình xây dựng Api cho hệ app bệnh nhân . Tra
+                cứu thông tin bệnh án, lịch sử khám chữa bệnh, kết quả xét
+                nghiệm. Hệ thống đã được triển khai thử nghiệm tại một số bệnh
+                viện, nhận phản hồi tích cực về giao diện và tính năng.
+              </p>
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300"
+                  >NestJs</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300"
+                  >Oracle</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300"
+                  >Redis</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300"
+                  >Git</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="relative pl-8 sm:pl-10 group">
+            <!-- Timeline Node (Dot) -->
+            <div
+              class="absolute -left-3 top-1.5 w-6 h-6 rounded-full bg-white dark:bg-brand-950 border-4 border-brand-500 group-hover:bg-brand-500 transition-colors duration-300 shadow-md"
+            ></div>
+
+            <!-- Content Card -->
+            <div
+              class="glass p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-md transition-all duration-300"
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4"
+              >
+                <div>
+                  <h3
+                    class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors"
+                  >
+                    Intern Fullstack Developer
+                  </h3>
+                  <p
+                    class="text-brand-600 dark:text-brand-400 font-semibold text-sm"
+                  >
+                    Công ty cổ phần Synodus
+                  </p>
+                </div>
+                <span
+                  class="inline-flex self-start sm:self-center px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold border border-slate-300 dark:border-slate-700"
+                >
+                  12/2024 - 02/2025
+                </span>
+              </div>
+              <p
+                class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4"
+              >
+                Thiết kế hệ thống quản trị bệnh viện bằng ReactJS và NodeJS, xây
+                dựng các module quản lý bệnh nhân, y lệnh và báo cáo. Hệ thống
+                đã được triển khai thử nghiệm tại một số bệnh viện, nhận phản
+                hồi tích cực về giao diện và tính năng.
+              </p>
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300"
+                  >Typescript</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300"
+                  >Nestjs</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300"
+                  >ReactJS</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300"
+                  >TailwindCSS</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300"
+                  >Git</span
+                >
+                <span
+                  class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300"
+                  >Ant design</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="py-24 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto reveal">
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-600 dark:text-brand-400 text-sm font-bold uppercase tracking-widest block mb-2">SẢN PHẨM</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Dự Án Tiêu Biểu</h2>
-                <div class="h-1.5 w-16 bg-brand-500 mx-auto mt-4 rounded-full shadow-[0_0_8px_#3b82f6]"></div>
-            </div>
-
-            <!-- Project Filters -->
-            <div class="flex items-center justify-center gap-3 mb-10 overflow-x-auto pb-4" id="project-filters">
-                <button data-filter="all" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all glass hover:bg-brand-500 hover:text-white border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 active-filter bg-brand-600 text-white dark:bg-brand-600">
-                    Tất cả
-                </button>
-                <button data-filter="fullstack" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all glass hover:bg-brand-500 hover:text-white border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
-                    Fullstack
-                </button>
-                <button data-filter="backend" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all glass hover:bg-brand-500 hover:text-white border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
-                    Backend API
-                </button>
-            </div>
-
-            <!-- Project Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-                <!-- Project 1 - Healthcare Ward Rounding -->
-                <div class="project-card glass rounded-2xl overflow-hidden border border-slate-200/50 dark:border-slate-800/50 group flex flex-col hover:shadow-xl hover:border-emerald-500/20 hover:scale-[1.01] transition-all duration-300" data-category="fullstack">
-                    <div class="h-48 overflow-hidden bg-gradient-to-br from-emerald-700 to-teal-950 relative">
-                        <div class="absolute inset-0 flex items-center justify-center text-white/90 p-6">
-                            <div class="text-center">
-                                <i data-lucide="stethoscope" class="w-12 h-12 mx-auto mb-2 animate-pulse text-emerald-300"></i>
-                                <span class="font-extrabold text-base tracking-wide uppercase">Healthcare Ward</span>
-                            </div>
-                        </div>
-                        <!-- Deployed badge -->
-                        <div class="absolute top-3 right-3 flex items-center gap-1.5 bg-emerald-500/90 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
-                            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse inline-block"></span>
-                            Đã triển khai
-                        </div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <div class="space-y-2">
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">Healthcare – App Đi Buồng</h3>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                                Ứng dụng quản lý đi buồng bệnh viện theo thời gian thực — ghi nhận chỉ số sinh tồn, y lệnh, tiến độ điều trị và phân công điều dưỡng. Đã triển khai thực tế tại nhiều bệnh viện lớn và nhỏ trên cả nước.
-                            </p>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">ReactJS</span>
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">NodeJS</span>
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">PostgreSQL</span>
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">REST API</span>
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">WebSocket</span>
-                            </div>
-                            <div class="flex items-center gap-4 pt-2 border-t border-slate-200/50 dark:border-slate-800/50 text-sm">
-                                <span class="flex items-center gap-1 text-slate-400 italic text-xs">
-                                    <i data-lucide="lock" class="w-3.5 h-3.5"></i> Private – NDA
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card glass rounded-2xl overflow-hidden border border-slate-200/50 dark:border-slate-800/50 group flex flex-col hover:shadow-xl hover:border-brand-500/20 hover:scale-[1.01] transition-all duration-300" data-category="backend">
-                    <div class="h-48 overflow-hidden bg-gradient-to-br from-slate-900 to-indigo-900 relative">
-                        <!-- Simulated Visual UI Placeholder -->
-                        <div class="absolute inset-0 flex items-center justify-center text-white/90 p-6">
-                            <div class="text-center">
-                                <i data-lucide="key" class="w-12 h-12 mx-auto mb-2 animate-pulse text-brand-400"></i>
-                                <span class="font-extrabold text-base tracking-wide uppercase">AuthShield Gateway</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <div class="space-y-2">
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors">AuthShield Gateway API</h3>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                                Cổng xác thực JWT/OAuth2 bảo mật cao sử dụng cơ chế Access Token và Refresh Token, cấu hình Rate-Limiting phòng chống tấn công brute-force.
-                            </p>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-500/10 text-brand-600 dark:text-brand-400">NestJS</span>
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-500/10 text-brand-600 dark:text-brand-400">TypeScript</span>
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-500/10 text-brand-600 dark:text-brand-400">Redis</span>
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-500/10 text-brand-600 dark:text-brand-400">Docker</span>
-                            </div>
-                            <div class="flex items-center gap-4 pt-2 border-t border-slate-200/50 dark:border-slate-800/50 text-sm">
-                                <a href="https://github.com" target="_blank" class="flex items-center gap-1 hover:text-brand-500 font-semibold transition-colors">
-                                    <i data-lucide="github" class="w-4 h-4"></i> GitHub
-                                </a>
-                                <a href="https://demo.com" target="_blank" class="flex items-center gap-1 hover:text-brand-500 font-semibold transition-colors">
-                                    <i data-lucide="file-text" class="w-4 h-4"></i> Docs Api
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card glass rounded-2xl overflow-hidden border border-slate-200/50 dark:border-slate-800/50 group flex flex-col hover:shadow-xl hover:border-brand-500/20 hover:scale-[1.01] transition-all duration-300" data-category="fullstack">
-                    <div class="h-48 overflow-hidden bg-gradient-to-br from-indigo-900 to-slate-950 relative">
-                        <!-- Simulated Visual UI Placeholder -->
-                        <div class="absolute inset-0 flex items-center justify-center text-white/90 p-6">
-                            <div class="text-center">
-                                <i data-lucide="calendar" class="w-12 h-12 mx-auto mb-2 animate-pulse text-cyan-400"></i>
-                                <span class="font-extrabold text-base tracking-wide uppercase">SyncTask Workspace</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <div class="space-y-2">
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors">SyncTask Workspace</h3>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                                Phần mềm quản lý công việc và cộng tác đội ngũ real-time sử dụng WebSocket, giao diện Kanban mượt mà kéo thả linh hoạt, quản lý deadline tự động.
-                            </p>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-500/10 text-brand-600 dark:text-brand-400">NextJS</span>
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-500/10 text-brand-600 dark:text-brand-400">NodeJS</span>
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-500/10 text-brand-600 dark:text-brand-400">Socket.io</span>
-                                <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-500/10 text-brand-600 dark:text-brand-400">MongoDB</span>
-                            </div>
-                            <div class="flex items-center gap-4 pt-2 border-t border-slate-200/50 dark:border-slate-800/50 text-sm">
-                                <a href="https://github.com" target="_blank" class="flex items-center gap-1 hover:text-brand-500 font-semibold transition-colors">
-                                    <i data-lucide="github" class="w-4 h-4"></i> GitHub
-                                </a>
-                                <a href="https://demo.com" target="_blank" class="flex items-center gap-1 hover:text-brand-500 font-semibold transition-colors">
-                                    <i data-lucide="external-link" class="w-4 h-4"></i> Live Demo
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="max-w-7xl mx-auto reveal">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span
+            class="text-brand-600 dark:text-brand-400 text-sm font-bold uppercase tracking-widest block mb-2"
+            >SẢN PHẨM</span
+          >
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+          >
+            Dự Án Tiêu Biểu
+          </h2>
+          <div
+            class="h-1.5 w-16 bg-brand-500 mx-auto mt-4 rounded-full shadow-[0_0_8px_#3b82f6]"
+          ></div>
         </div>
+
+        <!-- Project Filters -->
+        <div
+          class="flex items-center justify-center gap-3 mb-10 overflow-x-auto pb-4"
+          id="project-filters"
+        >
+          <button
+            data-filter="all"
+            class="px-4 py-2 rounded-xl text-sm font-semibold transition-all glass hover:bg-brand-500 hover:text-white border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 active-filter bg-brand-600 text-white dark:bg-brand-600"
+          >
+            Tất cả
+          </button>
+          <button
+            data-filter="fullstack"
+            class="px-4 py-2 rounded-xl text-sm font-semibold transition-all glass hover:bg-brand-500 hover:text-white border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300"
+          >
+            Fullstack
+          </button>
+          <button
+            data-filter="backend"
+            class="px-4 py-2 rounded-xl text-sm font-semibold transition-all glass hover:bg-brand-500 hover:text-white border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300"
+          >
+            Backend API
+          </button>
+        </div>
+
+        <!-- Project Grid -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          id="projects-grid"
+        >
+          <!-- Project 1 - Healthcare Ward Rounding -->
+          <div
+            class="project-card glass rounded-2xl overflow-hidden border border-slate-200/50 dark:border-slate-800/50 group flex flex-col hover:shadow-xl hover:border-emerald-500/20 hover:scale-[1.01] transition-all duration-300"
+            data-category="fullstack"
+          >
+            <div
+              class="h-48 overflow-hidden bg-gradient-to-br from-emerald-700 to-teal-950 relative"
+            >
+              <div
+                class="absolute inset-0 flex items-center justify-center text-white/90 p-6"
+              >
+                <div class="text-center">
+                  <i
+                    data-lucide="stethoscope"
+                    class="w-12 h-12 mx-auto mb-2 animate-pulse text-emerald-300"
+                  ></i>
+                  <span class="font-extrabold text-base tracking-wide uppercase"
+                    >Healthcare Ward</span
+                  >
+                </div>
+              </div>
+              <!-- Deployed badge -->
+              <div
+                class="absolute top-3 right-3 flex items-center gap-1.5 bg-emerald-500/90 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow"
+              >
+                <span
+                  class="w-1.5 h-1.5 rounded-full bg-white animate-pulse inline-block"
+                ></span>
+                Đã triển khai
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3
+                  class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors"
+                >
+                  Healthcare – App Đi Buồng
+                </h3>
+                <p
+                  class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed"
+                >
+                  Ứng dụng quản lý đi buồng bệnh viện theo thời gian thực — ghi
+                  nhận chỉ số sinh tồn, y lệnh, tiến độ điều trị và phân công
+                  điều dưỡng. Tạo và kí văn bản điện tử tích hợp với phần mềm
+                  HIS.Đã triển khai thực tế tại nhiều bệnh viện lớn và nhỏ trên
+                  cả nước.
+                </p>
+              </div>
+              <div class="space-y-4">
+                <div class="flex flex-wrap gap-1.5">
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                    >NodeJS</span
+                  >
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                    >Oracle</span
+                  >
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                    >REST API</span
+                  >
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                    >Redis</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-4 pt-2 border-t border-slate-200/50 dark:border-slate-800/50 text-sm"
+                >
+                  <span
+                    class="flex items-center gap-1 text-slate-400 italic text-xs"
+                  >
+                    <i data-lucide="lock" class="w-3.5 h-3.5"></i> Private – NDA
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="project-card glass rounded-2xl overflow-hidden border border-slate-200/50 dark:border-slate-800/50 group flex flex-col hover:shadow-xl hover:border-brand-500/20 hover:scale-[1.01] transition-all duration-300"
+            data-category="backend"
+          >
+            <div
+              class="h-48 overflow-hidden bg-gradient-to-br from-slate-900 to-indigo-900 relative"
+            >
+              <!-- Simulated Visual UI Placeholder -->
+              <div
+                class="absolute inset-0 flex items-center justify-center text-white/90 p-6"
+              >
+                <div class="text-center">
+                  <i
+                    data-lucide="key"
+                    class="w-12 h-12 mx-auto mb-2 animate-pulse text-brand-400"
+                  ></i>
+                  <span class="font-extrabold text-base tracking-wide uppercase"
+                    >Admin system</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3
+                  class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors"
+                >
+                  Hệ thống quản trị app đi buồng
+                </h3>
+                <p
+                  class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed"
+                >
+                  Hệ thống quản trị ứng dụng đi buồng hỗ trợ quản lý và theo dõi
+                  quá trình khám bệnh nội trú trong lĩnh vực Healthcare. Hệ
+                  thống giúp bác sĩ và nhân viên y tế quản lý danh sách bệnh
+                  nhân, thông tin phòng bệnh, lịch đi buồng, chỉ định cận lâm
+                  sàng và cập nhật tình trạng điều trị theo thời gian thực. Tham
+                  gia phát triển Backend API, tối ưu Oracle Database, xử lý
+                  nghiệp vụ y tế phức tạp và xây dựng giao diện quản trị giúp
+                  nâng cao hiệu suất làm việc và tối ưu quy trình vận hành bệnh
+                  viện.
+                </p>
+              </div>
+              <div class="space-y-4">
+                <div class="flex flex-wrap gap-1.5">
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-500/10 text-brand-600 dark:text-brand-400"
+                    >NestJS</span
+                  >
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-500/10 text-brand-600 dark:text-brand-400"
+                    >TypeScript</span
+                  >
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-500/10 text-brand-600 dark:text-brand-400"
+                    >Redis</span
+                  >
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-500/10 text-brand-600 dark:text-brand-400"
+                    >Docker</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-4 pt-2 border-t border-slate-200/50 dark:border-slate-800/50 text-sm"
+                >
+                  <a
+                    href="https://github.com"
+                    target="_blank"
+                    class="flex items-center gap-1 hover:text-brand-500 font-semibold transition-colors"
+                  >
+                    <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                  </a>
+                  <a
+                    href="https://demo.com"
+                    target="_blank"
+                    class="flex items-center gap-1 hover:text-brand-500 font-semibold transition-colors"
+                  >
+                    <i data-lucide="file-text" class="w-4 h-4"></i> Docs Api
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Project 3 - Patient App Backend -->
+          <div
+            class="project-card glass rounded-2xl overflow-hidden border border-slate-200/50 dark:border-slate-800/50 group flex flex-col hover:shadow-xl hover:border-violet-500/20 hover:scale-[1.01] transition-all duration-300"
+            data-category="backend"
+          >
+            <div
+              class="h-48 overflow-hidden bg-gradient-to-br from-violet-800 to-blue-950 relative"
+            >
+              <div
+                class="absolute inset-0 flex items-center justify-center text-white/90 p-6"
+              >
+                <div class="text-center">
+                  <i
+                    data-lucide="activity"
+                    class="w-12 h-12 mx-auto mb-2 animate-pulse text-violet-300"
+                  ></i>
+                  <span class="font-extrabold text-base tracking-wide uppercase"
+                    >Patient API</span
+                  >
+                </div>
+              </div>
+              <!-- Deployed badge -->
+              <div
+                class="absolute top-3 right-3 flex items-center gap-1.5 bg-violet-500/90 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow"
+              >
+                <span
+                  class="w-1.5 h-1.5 rounded-full bg-white animate-pulse inline-block"
+                ></span>
+                Đã triển khai
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3
+                  class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-violet-500 transition-colors"
+                >
+                  App Bệnh Nhân – Patient Portal API
+                </h3>
+                <p
+                  class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed"
+                >
+                  Hệ thống Backend & Web API quản lý thông tin bệnh nhân, lịch
+                  khám, kết quả xét nghiệm và thông báo thời gian thực. Xử lý
+                  hàng đợi tác vụ nặng (gửi email, đồng bộ HIS, xuất báo cáo)
+                  qua BullMQ, cache tối ưu với Redis và lưu trữ dữ liệu trên
+                  Oracle Database. Kiến trúc module hóa theo NestJS với REST API
+                  chuẩn, bảo mật JWT và rate-limiting.
+                </p>
+              </div>
+              <div class="space-y-4">
+                <div class="flex flex-wrap gap-1.5">
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400"
+                    >NestJS</span
+                  >
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400"
+                    >TypeScript</span
+                  >
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400"
+                    >Oracle</span
+                  >
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400"
+                    >Redis</span
+                  >
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400"
+                    >BullMQ</span
+                  >
+                  <span
+                    class="px-2 py-0.5 text-xs font-semibold rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400"
+                    >REST API</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-4 pt-2 border-t border-slate-200/50 dark:border-slate-800/50 text-sm"
+                >
+                  <span
+                    class="flex items-center gap-1 text-slate-400 italic text-xs"
+                  >
+                    <i data-lucide="lock" class="w-3.5 h-3.5"></i> Private – NDA
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Working Time / Availability Widget Section -->
-    <section id="availability" class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-100/30 dark:bg-neutralDark-900 relative">
-        <div class="max-w-4xl mx-auto relative z-10 reveal">
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-600 dark:text-brand-400 text-sm font-bold uppercase tracking-widest block mb-2">QUY HOẠCH</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Thời Gian & Trạng Thái Làm Việc</h2>
-                <div class="h-1.5 w-16 bg-brand-500 mx-auto mt-4 rounded-full shadow-[0_0_8px_#3b82f6]"></div>
-            </div>
-
-            <!-- Dynamic Availability Card -->
-            <div class="glass p-8 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 shadow-lg relative overflow-hidden">
-                <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-brand-500/10 blur-xl"></div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <!-- Calendar Schedule -->
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-3">
-                            <span class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center">
-                                <i data-lucide="calendar" class="w-5 h-5"></i>
-                            </span>
-                            <div>
-                                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Lịch Trình Làm Việc</h3>
-                                <p class="text-xs text-slate-500 dark:text-slate-400">Thời gian quy chuẩn làm việc hàng tuần</p>
-                            </div>
-                        </div>
-
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center py-2 border-b border-slate-200/30 dark:border-slate-800/30 text-sm">
-                                <span class="font-semibold">Thứ 2 - Thứ 6:</span>
-                                <span class="text-slate-600 dark:text-slate-300 font-medium">08:00 AM - 05:30 PM</span>
-                            </div>
-                            <div class="flex justify-between items-center py-2 border-b border-slate-200/30 dark:border-slate-800/30 text-sm">
-                                <span class="font-semibold">Thứ 7 & Chủ Nhật:</span>
-                                <span class="text-brand-500 font-semibold uppercase text-xs">Liên hệ qua email/Hotline</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                            <i data-lucide="globe" class="w-4 h-4 text-slate-400"></i> Múi giờ Việt Nam (GMT+7)
-                        </div>
-                    </div>
-
-                    <!-- Status Badges -->
-                    <div class="p-6 rounded-2xl bg-slate-500/5 dark:bg-slate-900/40 border border-slate-200/30 dark:border-slate-800/50 space-y-5">
-                        <div class="space-y-1">
-                            <span class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Trạng thái hiện tại</span>
-                            <div class="flex items-center gap-3">
-                                <span class="relative flex h-3 w-3">
-                                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
-                                  <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-500"></span>
-                                </span>
-                                <span class="font-extrabold text-xl text-brand-600 dark:text-brand-400 shadow-brand-500/20">AVAILABLE</span>
-                            </div>
-                        </div>
-
-                        <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                            Tôi có thể hợp tác các dự án dạng <strong>Freelance</strong>, làm việc <strong>Remote</strong> (toàn thời gian/bán thời gian) hoặc ký hợp đồng dài hạn tại văn phòng TP. Hà Nội.
-                        </p>
-
-                        <div class="pt-2">
-                            <a href="#contact" class="inline-flex items-center gap-2 text-sm font-bold text-brand-600 dark:text-brand-400 hover:text-brand-500 transition-colors">
-                                Trao đổi công việc ngay <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section
+      id="availability"
+      class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-100/30 dark:bg-neutralDark-900 relative"
+    >
+      <div class="max-w-4xl mx-auto relative z-10 reveal">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span
+            class="text-brand-600 dark:text-brand-400 text-sm font-bold uppercase tracking-widest block mb-2"
+            >QUY HOẠCH</span
+          >
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+          >
+            Thời Gian & Trạng Thái Làm Việc
+          </h2>
+          <div
+            class="h-1.5 w-16 bg-brand-500 mx-auto mt-4 rounded-full shadow-[0_0_8px_#3b82f6]"
+          ></div>
         </div>
+
+        <!-- Dynamic Availability Card -->
+        <div
+          class="glass p-8 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 shadow-lg relative overflow-hidden"
+        >
+          <div
+            class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-brand-500/10 blur-xl"
+          ></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <!-- Calendar Schedule -->
+            <div class="space-y-6">
+              <div class="flex items-center gap-3">
+                <span
+                  class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center"
+                >
+                  <i data-lucide="calendar" class="w-5 h-5"></i>
+                </span>
+                <div>
+                  <h3 class="font-bold text-lg text-slate-900 dark:text-white">
+                    Lịch Trình Làm Việc
+                  </h3>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">
+                    Thời gian quy chuẩn làm việc hàng tuần
+                  </p>
+                </div>
+              </div>
+
+              <div class="space-y-3">
+                <div
+                  class="flex justify-between items-center py-2 border-b border-slate-200/30 dark:border-slate-800/30 text-sm"
+                >
+                  <span class="font-semibold">Thứ 2 - Thứ 6:</span>
+                  <span class="text-slate-600 dark:text-slate-300 font-medium"
+                    >08:00 AM - 05:30 PM</span
+                  >
+                </div>
+                <div
+                  class="flex justify-between items-center py-2 border-b border-slate-200/30 dark:border-slate-800/30 text-sm"
+                >
+                  <span class="font-semibold">Thứ 7 & Chủ Nhật:</span>
+                  <span class="text-brand-500 font-semibold uppercase text-xs"
+                    >Liên hệ qua email/Hotline</span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400"
+              >
+                <i data-lucide="globe" class="w-4 h-4 text-slate-400"></i> Múi
+                giờ Việt Nam (GMT+7)
+              </div>
+            </div>
+
+            <!-- Status Badges -->
+            <div
+              class="p-6 rounded-2xl bg-slate-500/5 dark:bg-slate-900/40 border border-slate-200/30 dark:border-slate-800/50 space-y-5"
+            >
+              <div class="space-y-1">
+                <span
+                  class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest"
+                  >Trạng thái hiện tại</span
+                >
+                <div class="flex items-center gap-3">
+                  <span class="relative flex h-3 w-3">
+                    <span
+                      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"
+                    ></span>
+                    <span
+                      class="relative inline-flex rounded-full h-3 w-3 bg-brand-500"
+                    ></span>
+                  </span>
+                  <span
+                    class="font-extrabold text-xl text-brand-600 dark:text-brand-400 shadow-brand-500/20"
+                    >AVAILABLE</span
+                  >
+                </div>
+              </div>
+
+              <p
+                class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed"
+              >
+                Tôi có thể hợp tác các dự án dạng <strong>Freelance</strong>,
+                làm việc <strong>Remote</strong> (toàn thời gian/bán thời gian)
+                hoặc ký hợp đồng dài hạn tại văn phòng TP. Hà Nội.
+              </p>
+
+              <div class="pt-2">
+                <a
+                  href="#contact"
+                  class="inline-flex items-center gap-2 text-sm font-bold text-brand-600 dark:text-brand-400 hover:text-brand-500 transition-colors"
+                >
+                  Trao đổi công việc ngay
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto reveal">
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-600 dark:text-brand-400 text-sm font-bold uppercase tracking-widest block mb-2">KẾT NỐI</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Liên Hệ Với Tôi</h2>
-                <div class="h-1.5 w-16 bg-brand-500 mx-auto mt-4 rounded-full shadow-[0_0_8px_#3b82f6]"></div>
-            </div>
-
-            <!-- Contact Layout Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <!-- Contact Details Left Column -->
-                <div class="lg:col-span-5 space-y-8">
-                    <div class="space-y-4">
-                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Bạn có ý tưởng dự án lớn? Hãy bắt đầu trò chuyện!</h3>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm sm:text-base">
-                            Điền vào mẫu bên cạnh hoặc liên hệ trực tiếp qua thông tin bên dưới để cùng tạo ra những giải pháp công nghệ ấn tượng nhất.
-                        </p>
-                    </div>
-
-                    <!-- Direct Connect Cards -->
-                    <div class="space-y-4">
-                        <!-- Email -->
-                        <div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200/50 dark:border-slate-800/50 hover:border-brand-500/20 transition-all">
-                            <span class="w-10 h-10 rounded-lg bg-brand-500/10 text-brand-500 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="mail" class="w-5 h-5"></i>
-                            </span>
-                            <div class="truncate">
-                                <span class="text-xs text-slate-400 dark:text-slate-500 font-bold block uppercase">Email</span>
-                                <a href="mailto:trucbntdev7204@gmail.com" class="text-sm font-semibold hover:text-brand-500 transition-colors">trucbntdev7204@gmail.com</a>
-                            </div>
-                        </div>
-
-                        <!-- Phone -->
-                        <div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200/50 dark:border-slate-800/50 hover:border-brand-500/20 transition-all">
-                            <span class="w-10 h-10 rounded-lg bg-indigo-500/10 text-brand-500 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="phone" class="w-5 h-5"></i>
-                            </span>
-                            <div>
-                                <span class="text-xs text-slate-400 dark:text-slate-500 font-bold block uppercase">Hotline</span>
-                                <a href="tel:0912345678" class="text-sm font-semibold hover:text-brand-500 transition-colors">0975107204</a>
-                            </div>
-                        </div>
-
-                        <!-- Location -->
-                        <div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200/50 dark:border-slate-800/50 hover:border-brand-500/20 transition-all">
-                            <span class="w-10 h-10 rounded-lg bg-blue-500/10 text-brand-500 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="map-pin" class="w-5 h-5"></i>
-                            </span>
-                            <div>
-                                <span class="text-xs text-slate-400 dark:text-slate-500 font-bold block uppercase">Địa chỉ</span>
-                                <span class="text-sm font-semibold">Cầu Giấy, Hà Nội, Việt Nam</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interactive Contact Form Right Column -->
-                <div class="lg:col-span-7">
-                    <form id="contact-form" onsubmit="handleContactSubmit(event)" class="glass p-6 sm:p-8 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 space-y-5 shadow-sm">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <!-- Name Input -->
-                            <div class="space-y-2">
-                                <label for="form-name" class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Họ và tên *</label>
-                                <input type="text" id="form-name" required placeholder="Nguyễn Văn A" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all text-sm">
-                            </div>
-
-                            <!-- Email Input -->
-                            <div class="space-y-2">
-                                <label for="form-email" class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Địa chỉ Email *</label>
-                                <input type="email" id="form-email" required placeholder="nguyenvana@gmail.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all text-sm">
-                            </div>
-                        </div>
-
-                        <!-- Subject -->
-                        <div class="space-y-2">
-                            <label for="form-subject" class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Tiêu đề công việc</label>
-                            <input type="text" id="form-subject" placeholder="Cần thiết kế website / Tuyển dụng vị trí Fullstack..." class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all text-sm">
-                        </div>
-
-                        <!-- Message -->
-                        <div class="space-y-2">
-                            <label for="form-message" class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Nội dung chi tiết *</label>
-                            <textarea id="form-message" required rows="4" placeholder="Nhập lời nhắn của bạn ở đây..." class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all text-sm resize-none"></textarea>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <button type="submit" class="w-full px-6 py-4 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-lg shadow-brand-500/20 hover:shadow-brand-600/40 transition-all flex items-center justify-center gap-2 cursor-pointer">
-                            <i data-lucide="send" class="w-5 h-5"></i> Gửi Tin Nhắn Đi
-                        </button>
-                    </form>
-                </div>
-            </div>
+      <div class="max-w-7xl mx-auto reveal">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span
+            class="text-brand-600 dark:text-brand-400 text-sm font-bold uppercase tracking-widest block mb-2"
+            >KẾT NỐI</span
+          >
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+          >
+            Liên Hệ Với Tôi
+          </h2>
+          <div
+            class="h-1.5 w-16 bg-brand-500 mx-auto mt-4 rounded-full shadow-[0_0_8px_#3b82f6]"
+          ></div>
         </div>
+
+        <!-- Contact Layout -->
+        <div class="space-y-8">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
+              Bạn có ý tưởng dự án lớn? Hãy bắt đầu trò chuyện!
+            </h3>
+            <p
+              class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm sm:text-base"
+            >
+              Điền vào mẫu bên cạnh hoặc liên hệ trực tiếp qua thông tin bên
+              dưới để cùng tạo ra những giải pháp công nghệ ấn tượng nhất.
+            </p>
+          </div>
+
+          <!-- Direct Connect Cards -->
+          <div class="space-y-4">
+            <!-- Email -->
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl border border-slate-200/50 dark:border-slate-800/50 hover:border-brand-500/20 transition-all"
+            >
+              <span
+                class="w-10 h-10 rounded-lg bg-brand-500/10 text-brand-500 flex items-center justify-center flex-shrink-0"
+              >
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </span>
+              <div class="truncate">
+                <span
+                  class="text-xs text-slate-400 dark:text-slate-500 font-bold block uppercase"
+                  >Email</span
+                >
+                <a
+                  href="mailto:trucbntdev7204@gmail.com"
+                  class="text-sm font-semibold hover:text-brand-500 transition-colors"
+                  >trucbntdev7204@gmail.com</a
+                >
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl border border-slate-200/50 dark:border-slate-800/50 hover:border-brand-500/20 transition-all"
+            >
+              <span
+                class="w-10 h-10 rounded-lg bg-indigo-500/10 text-brand-500 flex items-center justify-center flex-shrink-0"
+              >
+                <i data-lucide="phone" class="w-5 h-5"></i>
+              </span>
+              <div>
+                <span
+                  class="text-xs text-slate-400 dark:text-slate-500 font-bold block uppercase"
+                  >Hotline</span
+                >
+                <a
+                  href="tel:0912345678"
+                  class="text-sm font-semibold hover:text-brand-500 transition-colors"
+                  >0975107204</a
+                >
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl border border-slate-200/50 dark:border-slate-800/50 hover:border-brand-500/20 transition-all"
+            >
+              <span
+                class="w-10 h-10 rounded-lg bg-blue-500/10 text-brand-500 flex items-center justify-center flex-shrink-0"
+              >
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </span>
+              <div>
+                <span
+                  class="text-xs text-slate-400 dark:text-slate-500 font-bold block uppercase"
+                  >Địa chỉ</span
+                >
+                <span class="text-sm font-semibold"
+                  >Cầu Giấy, Hà Nội, Việt Nam</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer Section -->
-    <footer class="border-t border-slate-200/50 dark:border-slate-900 bg-white dark:bg-brand-950 py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <!-- Left Info -->
-            <div class="text-center md:text-left">
-                <p class="font-extrabold text-lg bg-gradient-to-r from-brand-600 to-indigo-500 bg-clip-text text-transparent mb-1">Bùi Ngọc Thanh Trúc</p>
-                <p class="text-xs text-slate-400 dark:text-slate-500">
-                    &copy; 2026 Bùi Ngọc Thanh Trúc Portfolio. Tất cả quyền được bảo lưu.
-                </p>
-            </div>
-
-            <!-- Slogan in middle -->
-            <p class="text-xs sm:text-sm font-semibold italic text-slate-400 dark:text-slate-500 text-center max-w-xs sm:max-w-none">
-                "Code is like humor. When you have to explain it, it’s bad." – Cory House
-            </p>
-
-            <!-- Back to top button -->
-            <button onclick="scrollToTop()" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 hover:bg-brand-500 hover:text-white dark:hover:bg-brand-600 transition-colors" aria-label="Back to Top">
-                <i data-lucide="chevron-up" class="w-5 h-5"></i>
-            </button>
+    <footer
+      class="border-t border-slate-200/50 dark:border-slate-900 bg-white dark:bg-brand-950 py-12 px-4 sm:px-6 lg:px-8"
+    >
+      <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6"
+      >
+        <!-- Left Info -->
+        <div class="text-center md:text-left">
+          <p
+            class="font-extrabold text-lg bg-gradient-to-r from-brand-600 to-indigo-500 bg-clip-text text-transparent mb-1"
+          >
+            Bùi Ngọc Thanh Trúc
+          </p>
+          <p class="text-xs text-slate-400 dark:text-slate-500">
+            &copy; 2026 Bùi Ngọc Thanh Trúc Portfolio. Tất cả quyền được bảo
+            lưu.
+          </p>
         </div>
+
+        <!-- Slogan in middle -->
+        <p
+          class="text-xs sm:text-sm font-semibold italic text-slate-400 dark:text-slate-500 text-center max-w-xs sm:max-w-none"
+        >
+          “Stay hungry, stay foolish.” – Steve Jobs
+        </p>
+
+        <!-- Back to top button -->
+        <button
+          onclick="scrollToTop()"
+          class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 hover:bg-brand-500 hover:text-white dark:hover:bg-brand-600 transition-colors"
+          aria-label="Back to Top"
+        >
+          <i data-lucide="chevron-up" class="w-5 h-5"></i>
+        </button>
+      </div>
     </footer>
 
     <!-- JavaScript Block: Handles Interactivity, Themes, Scroll effects, Typing animations -->
     <script>
-        // Start up functions
-        window.addEventListener('DOMContentLoaded', () => {
-            // Load Lucide Icons
-            lucide.createIcons();
+      // Start up functions
+      window.addEventListener("DOMContentLoaded", () => {
+        // Load Lucide Icons
+        lucide.createIcons();
 
-            // Hide loading screen
-            setTimeout(() => {
-                const loader = document.getElementById('loader');
-                loader.style.opacity = '0';
-                loader.style.visibility = 'hidden';
-            }, 800);
+        // Hide loading screen
+        setTimeout(() => {
+          const loader = document.getElementById("loader");
+          loader.style.opacity = "0";
+          loader.style.visibility = "hidden";
+        }, 800);
 
-            // Trigger active theme check
-            initTheme();
+        // Trigger active theme check
+        initTheme();
 
-            // Start Typing effect
-            startTypewriter();
+        // Start Typing effect
+        startTypewriter();
 
-            // Register event listeners
-            setupEventListeners();
+        // Register event listeners
+        setupEventListeners();
 
-            // Reveal animations on scroll
-            window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll(); // trigger immediately
+        // Reveal animations on scroll
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll(); // trigger immediately
+      });
+
+      // Dark Mode Logic
+      function initTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        const systemPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+
+        if (savedTheme === "light") {
+          document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.add("dark");
+        }
+      }
+
+      function toggleTheme() {
+        const isDark = document.documentElement.classList.contains("dark");
+        if (isDark) {
+          document.documentElement.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        } else {
+          document.documentElement.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      // Typewriter Effect Data
+      const words = [
+        "Fullstack Developer",
+        "Backend Developer",
+        "Software Engineer",
+      ];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let typewriterSpeed = 100;
+
+      function startTypewriter() {
+        const textElement = document.getElementById("typewriter-text");
+        if (!textElement) return;
+
+        const currentWord = words[wordIndex];
+
+        if (isDeleting) {
+          textElement.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+          typewriterSpeed = 50; // speed up when deleting
+        } else {
+          textElement.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+          typewriterSpeed = 120; // normal speed when typing
+        }
+
+        if (!isDeleting && charIndex === currentWord.length) {
+          // Pause at the end of word typing
+          isDeleting = true;
+          typewriterSpeed = 1500;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          typewriterSpeed = 500; // brief pause before starting next word
+        }
+
+        setTimeout(startTypewriter, typewriterSpeed);
+      }
+
+      // Scroll Reveal Trigger function
+      function revealOnScroll() {
+        const reveals = document.querySelectorAll(".reveal");
+        const windowHeight = window.innerHeight;
+
+        reveals.forEach((reveal) => {
+          const elementTop = reveal.getBoundingClientRect().top;
+          const elementVisible = 100; // Trigger distance in pixels
+
+          if (elementTop < windowHeight - elementVisible) {
+            reveal.classList.add("active");
+          }
         });
 
-        // Dark Mode Logic
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            if (savedTheme === 'light') {
-                document.documentElement.classList.remove('dark');
-            } else {
-                document.documentElement.classList.add('dark');
-            }
+        // Handle Sticky Header Blur Effect on scroll
+        const header = document.getElementById("main-header");
+        if (window.scrollY > 20) {
+          header.classList.add(
+            "backdrop-blur-md",
+            "bg-white/40",
+            "dark:bg-brand-950/40",
+            "py-2"
+          );
+          header.classList.remove("py-4");
+        } else {
+          header.classList.remove(
+            "backdrop-blur-md",
+            "bg-white/40",
+            "dark:bg-brand-950/40",
+            "py-2"
+          );
+          header.classList.add("py-4");
         }
+      }
 
-        function toggleTheme() {
-            const isDark = document.documentElement.classList.contains('dark');
-            if (isDark) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        }
+      // Event Listeners Registration
+      function setupEventListeners() {
+        // Theme toggle click
+        document
+          .getElementById("theme-toggle")
+          .addEventListener("click", toggleTheme);
 
-        // Typewriter Effect Data
-        const words = ["Fullstack Developer", "Backend Developer", "Software Engineer"];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typewriterSpeed = 100;
+        // Mobile menu toggle click
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuOpenIcon = document.getElementById("menu-icon-open");
+        const menuCloseIcon = document.getElementById("menu-icon-close");
 
-        function startTypewriter() {
-            const textElement = document.getElementById('typewriter-text');
-            if (!textElement) return;
+        mobileMenuBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+          menuOpenIcon.classList.toggle("hidden");
+          menuCloseIcon.classList.toggle("hidden");
+        });
 
-            const currentWord = words[wordIndex];
+        // Close mobile menu on clicking links
+        const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+            menuOpenIcon.classList.remove("hidden");
+            menuCloseIcon.classList.add("hidden");
+          });
+        });
 
-            if (isDeleting) {
-                textElement.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-                typewriterSpeed = 50; // speed up when deleting
-            } else {
-                textElement.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-                typewriterSpeed = 120; // normal speed when typing
-            }
+        // Projects Filter Click Listeners
+        const filterButtons = document.querySelectorAll(
+          "#project-filters button"
+        );
+        const projectCards = document.querySelectorAll(".project-card");
 
-            if (!isDeleting && charIndex === currentWord.length) {
-                // Pause at the end of word typing
-                isDeleting = true;
-                typewriterSpeed = 1500;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                typewriterSpeed = 500; // brief pause before starting next word
-            }
-
-            setTimeout(startTypewriter, typewriterSpeed);
-        }
-
-        // Scroll Reveal Trigger function
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-            const windowHeight = window.innerHeight;
-
-            reveals.forEach(reveal => {
-                const elementTop = reveal.getBoundingClientRect().top;
-                const elementVisible = 100; // Trigger distance in pixels
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveal.classList.add('active');
-                }
+        filterButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            // Remove active styles from previous button
+            filterButtons.forEach((b) => {
+              b.classList.remove(
+                "bg-brand-600",
+                "text-white",
+                "dark:bg-brand-600"
+              );
             });
 
-            // Handle Sticky Header Blur Effect on scroll
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 20) {
-                header.classList.add('backdrop-blur-md', 'bg-white/40', 'dark:bg-brand-950/40', 'py-2');
-                header.classList.remove('py-4');
-            } else {
-                header.classList.remove('backdrop-blur-md', 'bg-white/40', 'dark:bg-brand-950/40', 'py-2');
-                header.classList.add('py-4');
-            }
-        }
+            // Add active style to current button
+            btn.classList.add("bg-brand-600", "text-white");
 
-        // Event Listeners Registration
-        function setupEventListeners() {
-            // Theme toggle click
-            document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+            const category = btn.getAttribute("data-filter");
 
-            // Mobile menu toggle click
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuOpenIcon = document.getElementById('menu-icon-open');
-            const menuCloseIcon = document.getElementById('menu-icon-close');
-
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                menuOpenIcon.classList.toggle('hidden');
-                menuCloseIcon.classList.toggle('hidden');
+            projectCards.forEach((card) => {
+              const cardCategory = card.getAttribute("data-category");
+              if (category === "all" || cardCategory === category) {
+                card.style.display = "flex";
+                setTimeout(() => {
+                  card.style.opacity = "1";
+                  card.style.transform = "scale(1)";
+                }, 50);
+              } else {
+                card.style.opacity = "0";
+                card.style.transform = "scale(0.95)";
+                setTimeout(() => {
+                  card.style.display = "none";
+                }, 250);
+              }
             });
+          });
+        });
+      }
 
-            // Close mobile menu on clicking links
-            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                    menuOpenIcon.classList.remove('hidden');
-                    menuCloseIcon.classList.add('hidden');
-                });
-            });
+      // Custom interactive toasts
+      function showToast(title, message) {
+        const toast = document.getElementById("toast");
+        const tTitle = document.getElementById("toast-title");
+        const tMsg = document.getElementById("toast-message");
 
-            // Projects Filter Click Listeners
-            const filterButtons = document.querySelectorAll('#project-filters button');
-            const projectCards = document.querySelectorAll('.project-card');
+        tTitle.textContent = title;
+        tMsg.textContent = message;
 
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remove active styles from previous button
-                    filterButtons.forEach(b => {
-                        b.classList.remove('bg-brand-600', 'text-white', 'dark:bg-brand-600');
-                    });
-                    
-                    // Add active style to current button
-                    btn.classList.add('bg-brand-600', 'text-white');
+        // Animate toast entry
+        toast.classList.remove("translate-y-24", "opacity-0");
+        toast.classList.add("translate-y-0", "opacity-100");
 
-                    const category = btn.getAttribute('data-filter');
+        // Hide after 4 seconds
+        setTimeout(() => {
+          toast.classList.add("translate-y-24", "opacity-0");
+          toast.classList.remove("translate-y-0", "opacity-100");
+        }, 4000);
+      }
 
-                    projectCards.forEach(card => {
-                        const cardCategory = card.getAttribute('data-category');
-                        if (category === 'all' || cardCategory === category) {
-                            card.style.display = 'flex';
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'scale(1)';
-                            }, 50);
-                        } else {
-                            card.style.opacity = '0';
-                            card.style.transform = 'scale(0.95)';
-                            setTimeout(() => {
-                                card.style.display = 'none';
-                            }, 250);
-                        }
-                    });
-                });
-            });
-        }
+      // Handle Contact Form Submission
+      function handleContactSubmit(event) {
+        event.preventDefault();
 
-        // Custom interactive toasts
-        function showToast(title, message) {
-            const toast = document.getElementById('toast');
-            const tTitle = document.getElementById('toast-title');
-            const tMsg = document.getElementById('toast-message');
+        const name = document.getElementById("form-name").value;
+        const email = document.getElementById("form-email").value;
+        const subject = document.getElementById("form-subject").value;
+        const message = document.getElementById("form-message").value;
 
-            tTitle.textContent = title;
-            tMsg.textContent = message;
+        // Visual simulation of API post
+        const submitBtn = event.target.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
 
-            // Animate toast entry
-            toast.classList.remove('translate-y-24', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<i data-lucide="loader" class="w-5 h-5 animate-spin"></i> Đang gửi tin nhắn...`;
+        lucide.createIcons();
 
-            // Hide after 4 seconds
-            setTimeout(() => {
-                toast.classList.add('translate-y-24', 'opacity-0');
-                toast.classList.remove('translate-y-0', 'opacity-100');
-            }, 4000);
-        }
+        setTimeout(() => {
+          // Success action simulation
+          showToast(
+            "Thành công!",
+            `Cảm ơn ${name}, tin nhắn của bạn đã được gửi. Tôi sẽ trả lời sớm nhất qua mail: ${email}!`
+          );
 
-        // Handle Contact Form Submission
-        function handleContactSubmit(event) {
-            event.preventDefault();
+          // Reset form fields
+          event.target.reset();
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          lucide.createIcons();
+        }, 1500);
+      }
 
-            const name = document.getElementById('form-name').value;
-            const email = document.getElementById('form-email').value;
-            const subject = document.getElementById('form-subject').value;
-            const message = document.getElementById('form-message').value;
+      // Download CV Simulation with Toast trigger
+      function downloadCV() {
+        showToast(
+          "Tải xuống CV",
+          "Hồ sơ cá nhân (PDF) đang được khởi tạo và tải xuống thiết bị của bạn!"
+        );
 
-            // Visual simulation of API post
-            const submitBtn = event.target.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
+        // Simulating trigger anchor download
+        setTimeout(() => {
+          const link = document.createElement("a");
+          link.href = "#"; // Put your absolute CV document link here
+          link.download = "CV_BuiNgocThanhTruc_FullstackDev.pdf";
+          // Trigger action in real-use
+        }, 500);
+      }
 
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i data-lucide="loader" class="w-5 h-5 animate-spin"></i> Đang gửi tin nhắn...`;
-            lucide.createIcons();
-
-            setTimeout(() => {
-                // Success action simulation
-                showToast("Thành công!", `Cảm ơn ${name}, tin nhắn của bạn đã được gửi. Tôi sẽ trả lời sớm nhất qua mail: ${email}!`);
-                
-                // Reset form fields
-                event.target.reset();
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-                lucide.createIcons();
-            }, 1500);
-        }
-
-        // Download CV Simulation with Toast trigger
-        function downloadCV() {
-            showToast("Tải xuống CV", "Hồ sơ cá nhân (PDF) đang được khởi tạo và tải xuống thiết bị của bạn!");
-            
-            // Simulating trigger anchor download
-            setTimeout(() => {
-                const link = document.createElement('a');
-                link.href = '#'; // Put your absolute CV document link here
-                link.download = 'CV_BuiNgocThanhTruc_FullstackDev.pdf';
-                // Trigger action in real-use
-            }, 500);
-        }
-
-        // Back to top scroll handler
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
+      // Back to top scroll handler
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
     </script>
-</body>
+  </body>
 </html>
