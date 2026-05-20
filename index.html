@@ -2129,6 +2129,13 @@
             &copy; 2026 Bùi Ngọc Thanh Trúc Portfolio. Tất cả quyền được bảo
             lưu.
           </p>
+          <div class="flex items-center justify-center md:justify-start gap-1.5 mt-2">
+            <i data-lucide="eye" class="w-3.5 h-3.5 text-brand-500"></i>
+            <span class="text-xs text-slate-400 dark:text-slate-500">
+              Lượt xem trang này:
+              <span id="visit-count" class="font-bold text-brand-500">0</span>
+            </span>
+          </div>
         </div>
 
         <!-- Slogan in middle -->
@@ -2172,10 +2179,23 @@
         // Register event listeners
         setupEventListeners();
 
+        // Track and display visit count
+        initVisitCounter();
+
         // Reveal animations on scroll
         window.addEventListener("scroll", revealOnScroll);
         revealOnScroll(); // trigger immediately
       });
+
+      // Visit Counter using localStorage
+      function initVisitCounter() {
+        const key = "portfolio_visit_count";
+        const count = (parseInt(localStorage.getItem(key) || "0", 10)) + 1;
+        localStorage.setItem(key, count);
+
+        const el = document.getElementById("visit-count");
+        if (el) el.textContent = count.toLocaleString("vi-VN");
+      }
 
       // Dark Mode Logic
       function initTheme() {
